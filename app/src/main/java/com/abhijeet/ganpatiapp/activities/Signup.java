@@ -72,16 +72,17 @@ public class Signup extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(Signup.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                                database.getReference().child(firebaseAuth.getUid()).child("Name").setValue(getName);
-                                database.getReference().child(firebaseAuth.getUid()).child("Phone").setValue(getPhone);
-                                database.getReference().child(firebaseAuth.getUid()).child("Address").setValue(getAddress);
+                                database.getReference().child("Users").child(firebaseAuth.getUid()).child("Name").setValue(getName);
+                                database.getReference().child("Users").child(firebaseAuth.getUid()).child("Phone").setValue(getPhone);
+                                database.getReference().child("Users").child(firebaseAuth.getUid()).child("Address").setValue(getAddress);
+                                database.getReference().child("Users").child(firebaseAuth.getUid()).child("Email").setValue(getEmail);
                                 Intent intent = new Intent(Signup.this, Login.class);
                                 startActivity(intent);
                                 finish();
                             }
 
                             else{
-                                Toast.makeText(Signup.this, "Account Already Exists", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Signup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

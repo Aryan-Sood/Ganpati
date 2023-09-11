@@ -161,7 +161,9 @@ public class Login extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     String name = account.getDisplayName();
-                                    database.getReference().child(firebaseAuth.getUid()).child("Name").setValue(name);
+                                    String email = account.getEmail();
+                                    database.getReference().child("Users").child(firebaseAuth.getUid()).child("Name").setValue(name);
+                                    database.getReference().child("Users").child(firebaseAuth.getUid()).child("Email").setValue(email);
                                     Intent intent = new Intent(Login.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
