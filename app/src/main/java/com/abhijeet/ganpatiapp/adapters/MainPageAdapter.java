@@ -1,5 +1,6 @@
 package com.abhijeet.ganpatiapp.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.ganpatiapp.R;
+import com.abhijeet.ganpatiapp.activities.Aarti_list;
 import com.abhijeet.ganpatiapp.modelclass.MainPageModelClass;
 import com.google.android.material.card.MaterialCardView;
 
@@ -35,6 +37,14 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
         int color = list.get(position).getColor();
 
         holder.setData(color);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Aarti_list.class);
+                v.getContext().startActivity(intent);
+            }
+        });
 
     }
 

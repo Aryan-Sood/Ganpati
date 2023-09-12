@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.ganpatiapp.adapters.MainPageAdapter;
 import com.abhijeet.ganpatiapp.modelclass.MainPageModelClass;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,12 +44,20 @@ public class MainActivity extends AppCompatActivity {
     MainPageAdapter adapter;
     List<MainPageModelClass> list;
 
+    FirebaseDatabase database;
+
+    TextView mainText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.recyclerView);
+        mainText = findViewById(R.id.mainText);
+        database = FirebaseDatabase.getInstance();
+
+        DatabaseReference ref = database.getReference().child("Aarti");
 
         layoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener(2f));
 
@@ -59,6 +69,18 @@ public class MainActivity extends AppCompatActivity {
 
         CardView setting = findViewById(R.id.cardView);
         setting.setOnClickListener(view -> setting());
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mainText.setText(snapshot.child("संतोषी माता की आरती").getValue(String.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
