@@ -75,7 +75,6 @@ public class Aarti_list extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds: snapshot.getChildren()){
                     list.add(new Aarti_List_Model_Class(ds.getKey().toString()));
-                    Toast.makeText(Aarti_list.this, ds.getKey().toString(), Toast.LENGTH_SHORT).show();
                 }
             }
 
