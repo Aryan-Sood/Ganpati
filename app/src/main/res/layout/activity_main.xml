@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFCA80"
     tools:context=".activities.MainActivity">
 
     <ScrollView
@@ -137,9 +138,14 @@
                     <TextView
                         android:layout_width="0sp"
                         android:layout_height="0sp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginEnd="180dp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center"
                         android:text="ॐ कृष्णाय वासुदेवाय हरये परमात्मने॥ \n प्रणत: क्लेशनाशाय गोविंदाय नमो नम:॥"
+                        android:textColor="#171717"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
