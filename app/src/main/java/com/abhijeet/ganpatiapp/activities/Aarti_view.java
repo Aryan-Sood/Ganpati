@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.TextView;
 
@@ -62,5 +64,15 @@ public class Aarti_view extends AppCompatActivity {
                 onBackPressed();
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        // Vibrate for 100 milliseconds
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator != null) {
+            vibrator.vibrate(50);
+        }
+
+        super.onBackPressed();
     }
 }
