@@ -70,18 +70,6 @@ public class MainActivity extends AppCompatActivity {
         CardView setting = findViewById(R.id.cardView);
         setting.setOnClickListener(view -> setting());
 
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                mainText.setText(snapshot.child("संतोषी माता की आरती").getValue(String.class));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
     }
 
 

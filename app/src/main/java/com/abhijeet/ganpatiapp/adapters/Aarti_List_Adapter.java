@@ -1,5 +1,6 @@
 package com.abhijeet.ganpatiapp.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.ganpatiapp.R;
+import com.abhijeet.ganpatiapp.activities.Aarti_view;
 import com.abhijeet.ganpatiapp.modelclass.Aarti_List_Model_Class;
 import com.google.android.material.divider.MaterialDivider;
 
@@ -35,6 +37,15 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
         String name = list.get(position).getName();
 
         holder.setData(name);
+
+        holder.nameView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Aarti_view.class);
+                intent.putExtra("name", name);
+                v.getContext().startActivity(intent);
+            }
+        });
 
     }
 

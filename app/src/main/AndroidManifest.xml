@@ -15,7 +15,7 @@
         android:theme="@style/Theme.GanpatiApp"
         tools:targetApi="31">
         <activity
-            android:name=".Aarti_view"
+            android:name=".activities.Aarti_view"
             android:exported="false" />
         <activity
             android:name=".activities.Puja_list"
