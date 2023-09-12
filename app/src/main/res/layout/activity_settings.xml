@@ -114,6 +114,7 @@
             android:layout_marginTop="15dp"
             android:text="User Name"
             android:textColor="#202020"
+            android:textStyle="bold"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -124,6 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="User Address"
             android:textColor="#202020"
             android:textSize="14sp"
@@ -132,10 +134,12 @@
             app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
         <TextView
+            android:id="@+id/textView25"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="User Phone Number"
+            android:textStyle="bold"
             android:textColor="#202020"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -145,6 +149,7 @@
             android:id="@+id/textView24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:text="User email id"
             android:textColor="#202020"
