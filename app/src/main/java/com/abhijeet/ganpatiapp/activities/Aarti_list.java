@@ -6,7 +6,9 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Toast;
 
@@ -50,11 +52,8 @@ public class Aarti_list extends AppCompatActivity {
             }
         });
 
-
         initData();
         initRecyclerView();
-
-
     }
 
     public void initRecyclerView(){
@@ -66,7 +65,6 @@ public class Aarti_list extends AppCompatActivity {
         aartiRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
-
 
     public void initData(){
         list = new ArrayList<>();
@@ -85,5 +83,14 @@ public class Aarti_list extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        // Vibrate for 100 milliseconds
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator != null) {
+            vibrator.vibrate(50);
+        }
 
+        super.onBackPressed();
+    }
 }

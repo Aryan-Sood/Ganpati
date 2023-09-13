@@ -100,12 +100,37 @@
             android:layout_width="50sp"
             android:layout_height="50sp"
             android:layout_marginStart="-35dp"
+            app:cardBackgroundColor="#F6D6A7"
             android:layout_marginBottom="20dp"
             app:cardCornerRadius="50sp"
             app:cardElevation="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/cardView7"
             app:layout_constraintStart_toEndOf="@+id/cardView7"
-            app:strokeColor="#505050" />
+            app:strokeColor="#505050">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/image_upload" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/textView22"
