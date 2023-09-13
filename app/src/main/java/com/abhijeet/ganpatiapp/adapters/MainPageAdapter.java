@@ -1,15 +1,19 @@
 package com.abhijeet.ganpatiapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.ganpatiapp.R;
 import com.abhijeet.ganpatiapp.activities.Aarti_list;
+import com.abhijeet.ganpatiapp.activities.Kundali_entry;
+import com.abhijeet.ganpatiapp.activities.Puja_list;
 import com.abhijeet.ganpatiapp.modelclass.MainPageModelClass;
 import com.google.android.material.card.MaterialCardView;
 
@@ -32,7 +36,7 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MainPageAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MainPageAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         int color = list.get(position).getColor();
 
@@ -41,8 +45,21 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), Aarti_list.class);
-                v.getContext().startActivity(intent);
+                if (position==0){
+                    Intent intent = new Intent(v.getContext(), Aarti_list.class);
+                    v.getContext().startActivity(intent);
+                }
+                else if (position==1){
+                    Toast.makeText(v.getContext(), "Kundali", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(v.getContext(), Kundali_entry.class);
+                    v.getContext().startActivity(intent);
+                }
+                else if (position==2){
+                    Toast.makeText(v.getContext(), "Puja List", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(v.getContext(), Puja_list.class);
+                    v.getContext().startActivity(intent);
+                }
+
             }
         });
 

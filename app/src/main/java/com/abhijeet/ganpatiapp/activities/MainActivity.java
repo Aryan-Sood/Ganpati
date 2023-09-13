@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
         list = new ArrayList<>();
         list.add(new MainPageModelClass(Color.parseColor("#FFFFFF")));
         list.add(new MainPageModelClass(Color.parseColor("#000000")));
+        list.add(new MainPageModelClass(Color.parseColor("#FF000F")));
     }
 
 

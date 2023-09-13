@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,7 +28,7 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
     @NonNull
     @Override
     public Aarti_List_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.aarti_list_item_design,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.aarti_list_item_design, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,7 +39,7 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
 
         holder.setData(name);
 
-        holder.nameView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), Aarti_view.class);
@@ -46,7 +47,6 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
                 v.getContext().startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -54,7 +54,7 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView nameView;
         private MaterialDivider divider;
@@ -66,7 +66,7 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
             divider = itemView.findViewById(R.id.materialDivider);
         }
 
-        public void setData(String name){
+        public void setData(String name) {
             nameView.setText(name);
         }
     }

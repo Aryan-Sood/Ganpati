@@ -275,19 +275,6 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="20dp"
-                app:lottie_speed="0.5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView10"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/animation_lmdr6o2k" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
