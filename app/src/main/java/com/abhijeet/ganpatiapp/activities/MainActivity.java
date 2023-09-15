@@ -3,6 +3,8 @@ package com.abhijeet.ganpatiapp.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import com.abhijeet.ganpatiapp.R;
@@ -15,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,16 +27,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.ganpatiapp.adapters.MainPageAdapter;
 import com.abhijeet.ganpatiapp.modelclass.MainPageModelClass;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.mig35.carousellayoutmanager.CarouselLayoutManager;
 import com.mig35.carousellayoutmanager.CarouselZoomPostLayoutListener;
 import com.mig35.carousellayoutmanager.CenterScrollListener;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView mainText;
 
+    ImageView image;
+    StorageReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         mainText = findViewById(R.id.mainText);
         database = FirebaseDatabase.getInstance();
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        reference = FirebaseStorage.getInstance().getReference("images/logo.png");
+
+        image = findViewById(R.id.imageView4);
 
         DatabaseReference ref = database.getReference().child("Aarti");
 
@@ -70,6 +86,24 @@ public class MainActivity extends AppCompatActivity {
 
         CardView setting = findViewById(R.id.cardView);
         setting.setOnClickListener(view -> setting());
+
+        try {
+            File file = File.createTempFile("tempfile", ".png");
+            reference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                    image.setImageBitmap(bitmap);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

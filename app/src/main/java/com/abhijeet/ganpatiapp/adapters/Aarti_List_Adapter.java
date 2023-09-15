@@ -1,9 +1,11 @@
 package com.abhijeet.ganpatiapp.adapters;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,8 +38,9 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
     public void onBindViewHolder(@NonNull Aarti_List_Adapter.ViewHolder holder, int position) {
 
         String name = list.get(position).getName();
+        Bitmap bitmap = list.get(position).getImage();
 
-        holder.setData(name);
+        holder.setData(bitmap,name);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +60,7 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView nameView;
+        private ImageView image;
         private MaterialDivider divider;
 
         public ViewHolder(@NonNull View itemView) {
@@ -64,10 +68,12 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
 
             nameView = itemView.findViewById(R.id.textView21);
             divider = itemView.findViewById(R.id.materialDivider);
+            image = itemView.findViewById(R.id.god_image);
         }
 
-        public void setData(String name) {
+        public void setData(Bitmap b, String name) {
             nameView.setText(name);
+            image.setImageBitmap(b);
         }
     }
 }

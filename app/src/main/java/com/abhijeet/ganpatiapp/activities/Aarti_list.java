@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
@@ -15,13 +17,20 @@ import android.widget.Toast;
 import com.abhijeet.ganpatiapp.R;
 import com.abhijeet.ganpatiapp.adapters.Aarti_List_Adapter;
 import com.abhijeet.ganpatiapp.modelclass.Aarti_List_Model_Class;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +43,9 @@ public class Aarti_list extends AppCompatActivity {
     List<Aarti_List_Model_Class> list;
     Aarti_List_Adapter adapter;
 
+    StorageReference reference;
+    Bitmap bitmap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +56,7 @@ public class Aarti_list extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         ref = FirebaseDatabase.getInstance().getReference().child("Aarti");
+        reference = FirebaseStorage.getInstance().getReference("images/ganesh.png");
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,11 +65,13 @@ public class Aarti_list extends AppCompatActivity {
             }
         });
 
+
+        fetchImages();
         initData();
         initRecyclerView();
     }
 
-    public void initRecyclerView(){
+    public void initRecyclerView() {
         aartiRecyclerView = findViewById(R.id.aartiRecyclerView);
         layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -66,14 +81,15 @@ public class Aarti_list extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    public void initData(){
+    public void initData() {
         list = new ArrayList<>();
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds: snapshot.getChildren()){
-                    list.add(new Aarti_List_Model_Class(ds.getKey().toString()));
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    list.add(new Aarti_List_Model_Class(bitmap,ds.getKey().toString()));
                 }
+                Toast.makeText(Aarti_list.this, "done", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -93,4 +109,25 @@ public class Aarti_list extends AppCompatActivity {
 
         super.onBackPressed();
     }
+
+    public void fetchImages() {
+        try {
+            File file = File.createTempFile("tempfile", ".png");
+            reference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(Aarti_list.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
