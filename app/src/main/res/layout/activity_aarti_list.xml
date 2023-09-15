@@ -7,9 +7,16 @@
     android:background="#FFCA80"
     tools:context=".activities.Aarti_list">
 
-
     <ImageView
         android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/krishan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="-20dp"

@@ -7,9 +7,10 @@
     android:paddingBottom="5dp">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView8"
         android:layout_width="35sp"
         android:layout_height="35sp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="10dp"
         app:cardBackgroundColor="#FA7878"
         app:cardCornerRadius="50sp"
         app:cardElevation="8sp"
@@ -30,6 +31,7 @@
                 android:layout_marginEnd="2dp"
                 android:layout_marginBottom="2dp"
                 android:src="@drawable/ganesh"
+                android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,15 +43,15 @@
 
     <TextView
         android:id="@+id/textView21"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Aarti Name"
         android:textAlignment="center"
         android:textColor="#FB1F1F"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/materialDivider"
-        app:layout_constraintStart_toStartOf="@+id/materialDivider"
+        app:layout_constraintEnd_toStartOf="@+id/textView26"
+        app:layout_constraintStart_toEndOf="@+id/cardView8"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.divider.MaterialDivider
@@ -65,9 +67,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <TextView
+        android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="@font/imprima"
         android:text="Read now"
         android:textColor="#F85252"

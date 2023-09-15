@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         mainText = findViewById(R.id.mainText);
         database = FirebaseDatabase.getInstance();
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        reference = FirebaseStorage.getInstance().getReference("images/logo.png");
+        reference = FirebaseStorage.getInstance().getReference("images/ganesh.png");
 
         image = findViewById(R.id.imageView4);
 

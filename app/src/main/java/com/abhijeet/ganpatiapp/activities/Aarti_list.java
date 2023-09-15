@@ -1,5 +1,7 @@
 package com.abhijeet.ganpatiapp.activities;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -11,7 +13,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.abhijeet.ganpatiapp.R;
@@ -46,6 +50,8 @@ public class Aarti_list extends AppCompatActivity {
     StorageReference reference;
     Bitmap bitmap;
 
+    ImageView image2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +62,8 @@ public class Aarti_list extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         ref = FirebaseDatabase.getInstance().getReference().child("Aarti");
-        reference = FirebaseStorage.getInstance().getReference("images/ganesh.png");
+        reference = FirebaseStorage.getInstance().getReference("images/logo.png");
+        image2 = findViewById(R.id.imageView2);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +96,7 @@ public class Aarti_list extends AppCompatActivity {
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     list.add(new Aarti_List_Model_Class(bitmap,ds.getKey().toString()));
                 }
-                Toast.makeText(Aarti_list.this, "done", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Aarti_list.this, "done", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -116,7 +123,10 @@ public class Aarti_list extends AppCompatActivity {
             reference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                     bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                     image2.setImageBitmap(bitmap);
+                    Log.d(TAG, "onSuccess: " + bitmap.toString());
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
