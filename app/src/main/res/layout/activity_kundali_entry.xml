@@ -85,186 +85,198 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/imprima"
-                android:text="Child Detail"
-                android:textColor="#222222"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/editText3"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="50dp"
-                android:fontFamily="@font/imprima"
-                android:hint="Child Name"
-                android:textAlignment="center"
-                android:textColor="#121212"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-            <EditText
-                android:id="@+id/editText4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="50dp"
-                android:fontFamily="@font/imprima"
-                android:hint="Birth Date"
-                android:inputType="date"
-                android:textAlignment="center"
-                android:textColor="#121212"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText3" />
-
-            <EditText
-                android:id="@+id/editText5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="50dp"
-                android:fontFamily="@font/imprima"
-                android:hint="Birth Time"
-                android:inputType="datetime"
-                android:textAlignment="center"
-                android:textColor="#121212"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText4" />
-
-            <EditText
-                android:id="@+id/editText6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="50dp"
-                android:fontFamily="@font/imprima"
-                android:hint="Birth Location"
-                android:shadowColor="#000"
-                android:textAlignment="center"
-                android:textColor="#121212"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText5" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="350sp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="20dp"
-                app:cardBackgroundColor="#FD7F59"
-                app:cardCornerRadius="12sp"
-                app:cardElevation="8sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText6"
-                app:strokeColor="#2C2C2C">
+                android:layout_height="match_parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/textView19"
+                        android:id="@+id/textView18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="35dp"
                         android:fontFamily="@font/imprima"
-                        android:text="Parent Detail"
-                        android:textAlignment="center"
-                        android:textColor="#191919"
-                        android:textSize="20sp"
+                        android:text="Child Detail"
+                        android:textColor="#222222"
+                        android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/editText8"
+                        android:id="@+id/editText3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
+                        android:layout_marginStart="50dp"
                         android:layout_marginTop="20dp"
-                        android:layout_marginEnd="40dp"
+                        android:layout_marginEnd="50dp"
                         android:fontFamily="@font/imprima"
-                        android:hint="Father Name"
+                        android:hint="Child Name"
                         android:textAlignment="center"
-                        android:textColor="#202020"
+                        android:textColor="#121212"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
                     <EditText
-                        android:id="@+id/editText9"
+                        android:id="@+id/editText4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
+                        android:layout_marginStart="50dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginEnd="40dp"
+                        android:layout_marginEnd="50dp"
                         android:fontFamily="@font/imprima"
-                        android:hint="Mother Name"
+                        android:hint="Birth Date"
+                        android:inputType="date"
                         android:textAlignment="center"
-                        android:textColor="#202020"
+                        android:textColor="#121212"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+                        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
                     <EditText
-                        android:id="@+id/editText10"
+                        android:id="@+id/editText5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
+                        android:layout_marginStart="50dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginEnd="40dp"
+                        android:layout_marginEnd="50dp"
                         android:fontFamily="@font/imprima"
-                        android:hint="Current Address"
+                        android:hint="Birth Time"
+                        android:inputType="datetime"
                         android:textAlignment="center"
-                        android:textColor="#202020"
+                        android:textColor="#121212"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/editText9" />
+                        app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
                     <EditText
+                        android:id="@+id/editText6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
+                        android:layout_marginStart="50dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginEnd="40dp"
+                        android:layout_marginEnd="50dp"
                         android:fontFamily="@font/imprima"
-                        android:hint="Phone Number"
+                        android:hint="Birth Location"
+                        android:shadowColor="#000"
                         android:textAlignment="center"
-                        android:textColor="#202020"
+                        android:textColor="#121212"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/editText10" />
+                        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="350sp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="35dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="20dp"
+                        app:cardBackgroundColor="#FD7F59"
+                        app:cardCornerRadius="12sp"
+                        app:cardElevation="8sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editText6"
+                        app:strokeColor="#2C2C2C">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView19"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="35dp"
+                                android:fontFamily="@font/imprima"
+                                android:text="Parent Detail"
+                                android:textAlignment="center"
+                                android:textColor="#191919"
+                                android:textSize="20sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <EditText
+                                android:id="@+id/editText8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="40dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginEnd="40dp"
+                                android:fontFamily="@font/imprima"
+                                android:hint="Father Name"
+                                android:textAlignment="center"
+                                android:textColor="#202020"
+                                android:textSize="14sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+                            <EditText
+                                android:id="@+id/editText9"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="40dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="40dp"
+                                android:fontFamily="@font/imprima"
+                                android:hint="Mother Name"
+                                android:textAlignment="center"
+                                android:textColor="#202020"
+                                android:textSize="14sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/editText8" />
+
+                            <EditText
+                                android:id="@+id/editText10"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="40dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="40dp"
+                                android:fontFamily="@font/imprima"
+                                android:hint="Current Address"
+                                android:textAlignment="center"
+                                android:textColor="#202020"
+                                android:textSize="14sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/editText9" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="40dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="40dp"
+                                android:fontFamily="@font/imprima"
+                                android:hint="Phone Number"
+                                android:textAlignment="center"
+                                android:textColor="#202020"
+                                android:textSize="14sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/editText10" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+            </ScrollView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="50sp"
@@ -275,7 +287,28 @@
                 app:cardCornerRadius="50sp"
                 app:cardElevation="25sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/send"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -286,7 +319,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Soft copy will be provided by monday"
+        android:text="Soft copy will be provided by email"
         android:textColor="#323232"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
