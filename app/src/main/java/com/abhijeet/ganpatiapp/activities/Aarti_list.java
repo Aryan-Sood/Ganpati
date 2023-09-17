@@ -62,7 +62,7 @@ public class Aarti_list extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         ref = FirebaseDatabase.getInstance().getReference().child("Aarti");
-        reference = FirebaseStorage.getInstance().getReference("images/logo.png");
+        reference = FirebaseStorage.getInstance().getReference("images/vishnu.png");
         image2 = findViewById(R.id.imageView2);
 
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +75,6 @@ public class Aarti_list extends AppCompatActivity {
 
         fetchImages();
         initData();
-        initRecyclerView();
     }
 
     public void initRecyclerView() {
@@ -95,7 +94,9 @@ public class Aarti_list extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     list.add(new Aarti_List_Model_Class(bitmap,ds.getKey().toString()));
+                    Log.d(TAG, "onDataChange: " + ds.getKey().toString());
                 }
+                initRecyclerView();
 //                Toast.makeText(Aarti_list.this, "done", Toast.LENGTH_SHORT).show();
             }
 
@@ -119,7 +120,7 @@ public class Aarti_list extends AppCompatActivity {
 
     public void fetchImages() {
         try {
-            File file = File.createTempFile("tempfile", ".png");
+            File file = File.createTempFile("vishnu", ".png");
             reference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {

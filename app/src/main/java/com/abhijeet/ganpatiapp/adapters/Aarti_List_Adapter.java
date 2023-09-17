@@ -69,6 +69,7 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
             nameView = itemView.findViewById(R.id.textView21);
             divider = itemView.findViewById(R.id.materialDivider);
             image = itemView.findViewById(R.id.god_image);
+
         }
 
         public void setData(Bitmap b, String name) {
