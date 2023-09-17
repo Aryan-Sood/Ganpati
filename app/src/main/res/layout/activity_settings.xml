@@ -149,8 +149,7 @@
             android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"
+            android:layout_marginTop="5dp"
             android:text="User Address"
             android:textColor="#202020"
             android:textSize="14sp"
@@ -162,9 +161,8 @@
             android:id="@+id/textView25"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="User Phone Number"
-            android:textStyle="bold"
             android:textColor="#202020"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -174,25 +172,25 @@
             android:id="@+id/textView24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="User email id"
             android:textColor="#202020"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
-        <com.google.android.material.card.MaterialCardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/materialCardView4"
             android:layout_width="match_parent"
             android:layout_height="200sp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="150dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="210dp"
             android:elevation="12sp"
             app:cardBackgroundColor="#FF9B50"
-            app:layout_constraintBottom_toTopOf="@+id/materialCardView9"
+            app:cardCornerRadius="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2">
@@ -260,20 +258,21 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </androidx.cardview.widget.CardView>
 
 
-        <com.google.android.material.card.MaterialCardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/materialCardView9"
             android:layout_width="200sp"
             android:layout_height="50sp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="100dp"
             android:elevation="8sp"
             app:cardBackgroundColor="#8AC63D2F"
             app:cardCornerRadius="50sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView4">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -292,7 +291,20 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Developed By \n\nAryan Sood\n&amp;\nAbhijeet Kumar Pandey"
+            android:textAlignment="center"
+            android:textColor="#333333"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView9" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
