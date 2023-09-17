@@ -93,7 +93,7 @@ public class Aarti_list extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    list.add(new Aarti_List_Model_Class(bitmap,ds.getKey().toString()));
+                    list.add(new Aarti_List_Model_Class(convertToBitmap(),ds.getKey().toString()));
                     Log.d(TAG, "onDataChange: " + ds.getKey().toString());
                 }
                 initRecyclerView();
@@ -138,6 +138,13 @@ public class Aarti_list extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Bitmap convertToBitmap() {
+        // this function converts the drawable image to bitmap
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.spotify);
+        Bitmap finalimage = Bitmap.createScaledBitmap(bitmap,(int)(bitmap.getWidth()*0.2),(int)(bitmap.getHeight()*0.2),true);
+        return finalimage;
     }
 
 
