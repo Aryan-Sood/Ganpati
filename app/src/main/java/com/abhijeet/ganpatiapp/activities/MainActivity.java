@@ -5,23 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.abhijeet.ganpatiapp.R;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,12 +30,8 @@ import com.abhijeet.ganpatiapp.adapters.MainPageAdapter;
 import com.abhijeet.ganpatiapp.modelclass.MainPageModelClass;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -58,8 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
     TextView mainText;
 
-    ImageView image;
+    ImageView image, buttonTest;
     StorageReference reference;
+    ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         reference = FirebaseStorage.getInstance().getReference("images/ganesh.png");
+        scrollView = findViewById(R.id.scrollView);
+        buttonTest = findViewById(R.id.buttonTest);
 
         image = findViewById(R.id.imageView4);
 
@@ -81,11 +81,20 @@ public class MainActivity extends AppCompatActivity {
         initData();
         initRecyclerView();
 
+        checkOffset();
+
         CardView profile = findViewById(R.id.cardView3);
         profile.setOnClickListener(view -> profile());
 
         CardView setting = findViewById(R.id.cardView);
         setting.setOnClickListener(view -> setting());
+
+        buttonTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotourl("https://open.spotify.com/track/0TK2YIli7K1leLovkQiNik?si=8e7f5562396b4db4");
+            }
+        });
 
         try {
             File file = File.createTempFile("tempfile", ".png");
@@ -98,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (IOException e) {
@@ -157,5 +166,24 @@ public class MainActivity extends AppCompatActivity {
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
+    }
+
+    public void checkOffset(){
+        scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                View view = (View) scrollView.getChildAt(scrollView.getChildCount()-1);
+                int diff = (view.getBottom() - (scrollView.getHeight() + scrollView.getScrollY()));
+
+                if (diff==0){
+                    Toast.makeText(MainActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public void gotourl(String s){
+        Uri uri = Uri.parse(s);
+        startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 }

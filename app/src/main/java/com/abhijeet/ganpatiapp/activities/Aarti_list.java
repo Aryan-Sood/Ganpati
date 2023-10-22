@@ -63,7 +63,7 @@ public class Aarti_list extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         ref = FirebaseDatabase.getInstance().getReference().child("Aarti");
         reference = FirebaseStorage.getInstance().getReference("images/vishnu.png");
-        image2 = findViewById(R.id.imageView2);
+//        image2 = findViewById(R.id.imageView2);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +73,7 @@ public class Aarti_list extends AppCompatActivity {
         });
 
 
-        fetchImages();
+//        fetchImages();
         initData();
     }
 
@@ -125,7 +125,7 @@ public class Aarti_list extends AppCompatActivity {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                      bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-                     image2.setImageBitmap(bitmap);
+//                     image2.setImageBitmap(bitmap);
                     Log.d(TAG, "onSuccess: " + bitmap.toString());
 
                 }
