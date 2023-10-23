@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         initData();
         initRecyclerView();
 
-        checkOffset();
+        //checkOffset();
 
         CardView profile = findViewById(R.id.cardView3);
         profile.setOnClickListener(view -> profile());
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(a);
     }
 
-    public void checkOffset(){
+    /* public void checkOffset(){
         scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
+    } */
 
     public void gotourl(String s){
         Uri uri = Uri.parse(s);
