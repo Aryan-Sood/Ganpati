@@ -158,8 +158,9 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="250sp"
                 android:layout_marginHorizontal="30sp"
@@ -168,7 +169,7 @@
                 android:layout_marginEnd="35dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView"/>
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -197,7 +198,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+                app:layout_constraintTop_toBottomOf="@+id/viewPager"
                 app:strokeColor="#23A51A">
 
                 <androidx.constraintlayout.widget.ConstraintLayout

@@ -12,22 +12,20 @@ import com.abhijeet.ganpatiapp.R;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
+import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
-import com.abhijeet.ganpatiapp.adapters.MainPageAdapter;
-import com.abhijeet.ganpatiapp.modelclass.MainPageModelClass;
+import com.abhijeet.ganpatiapp.adapters.ViewPagerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -35,21 +33,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.mig35.carousellayoutmanager.CarouselLayoutManager;
-import com.mig35.carousellayoutmanager.CarouselZoomPostLayoutListener;
-import com.mig35.carousellayoutmanager.CenterScrollListener;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    RecyclerView recyclerView;
-    final CarouselLayoutManager layoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
-    MainPageAdapter adapter;
-    List<MainPageModelClass> list;
 
     FirebaseDatabase database;
 
@@ -59,12 +47,14 @@ public class MainActivity extends AppCompatActivity {
     StorageReference reference;
     ScrollView scrollView;
 
+    ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recyclerView);
+
         mainText = findViewById(R.id.mainText);
         database = FirebaseDatabase.getInstance();
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -73,13 +63,30 @@ public class MainActivity extends AppCompatActivity {
         buttonTest = findViewById(R.id.buttonTest);
 
         image = findViewById(R.id.imageView4);
+        viewPager = findViewById(R.id.viewPager);
 
         DatabaseReference ref = database.getReference().child("Aarti");
 
-        layoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener(2f));
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
 
-        initData();
-        initRecyclerView();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (viewPager.getCurrentItem()<2){
+                    viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+                }
+                else{
+                    viewPager.setCurrentItem(0);
+                }
+                handler.postDelayed(this::run,4000);
+            }
+        },4000);
+
+
+
+
 
         //checkOffset();
 
@@ -143,22 +150,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void initRecyclerView() {
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.addOnScrollListener(new CenterScrollListener());
-        layoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
-        adapter = new MainPageAdapter(list);
-        recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-    }
-
-    public void initData() {
-        list = new ArrayList<>();
-        list.add(new MainPageModelClass(Color.parseColor("#FFFFFF")));
-        list.add(new MainPageModelClass(Color.parseColor("#000000")));
-        list.add(new MainPageModelClass(Color.parseColor("#FF000F")));
-    }
 
 
     public void onBackPressed(){
