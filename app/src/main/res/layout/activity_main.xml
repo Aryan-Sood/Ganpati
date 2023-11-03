@@ -287,10 +287,11 @@
                                     
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/background">
 
                                         <androidx.cardview.widget.CardView
-                                            android:id="@+id/cardView9"
+                                            android:id="@+id/aarti_spotify"
                                             android:layout_width="45sp"
                                             android:layout_height="45sp"
                                             android:layout_marginEnd="10dp"
@@ -302,10 +303,10 @@
 
                                             <androidx.constraintlayout.widget.ConstraintLayout
                                                 android:layout_width="match_parent"
-                                                android:layout_height="match_parent">
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/background_blue">
 
                                                 <ImageView
-                                                    android:id="@+id/buttonTest"
                                                     android:layout_width="match_parent"
                                                     android:layout_height="match_parent"
                                                     android:layout_marginStart="10dp"
@@ -353,9 +354,11 @@
 
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/background">
 
                                         <androidx.cardview.widget.CardView
+                                            android:id="@+id/chalisha_spotify"
                                             android:layout_width="45sp"
                                             android:layout_height="45sp"
                                             android:layout_marginEnd="10dp"
@@ -367,7 +370,8 @@
 
                                             <androidx.constraintlayout.widget.ConstraintLayout
                                                 android:layout_width="match_parent"
-                                                android:layout_height="match_parent">
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/background_blue">
 
                                                 <ImageView
                                                     android:layout_width="match_parent"
@@ -379,8 +383,10 @@
                                                     android:src="@drawable/play"
                                                     app:layout_constraintBottom_toBottomOf="parent"
                                                     app:layout_constraintEnd_toEndOf="parent"
+                                                    app:layout_constraintHorizontal_bias="0.0"
                                                     app:layout_constraintStart_toStartOf="parent"
-                                                    app:layout_constraintTop_toTopOf="parent" />
+                                                    app:layout_constraintTop_toTopOf="parent"
+                                                    app:layout_constraintVertical_bias="1.0" />
 
                                             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -417,9 +423,11 @@
 
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/background">
 
                                         <androidx.cardview.widget.CardView
+                                            android:id="@+id/shiv_tandav_spotify"
                                             android:layout_width="45sp"
                                             android:layout_height="45sp"
                                             android:layout_marginEnd="10dp"
@@ -431,7 +439,8 @@
 
                                             <androidx.constraintlayout.widget.ConstraintLayout
                                                 android:layout_width="match_parent"
-                                                android:layout_height="match_parent">
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/background_blue">
 
                                                 <ImageView
                                                     android:layout_width="match_parent"
@@ -481,7 +490,8 @@
 
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/background">
 
                                         <androidx.cardview.widget.CardView
                                             android:layout_width="45sp"
@@ -495,7 +505,8 @@
 
                                             <androidx.constraintlayout.widget.ConstraintLayout
                                                 android:layout_width="match_parent"
-                                                android:layout_height="match_parent">
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/background_blue">
 
                                                 <ImageView
                                                     android:layout_width="match_parent"
@@ -521,7 +532,7 @@
                                             android:fontFamily="@font/andika"
                                             android:text="Aarti Sangrah"
                                             android:textColor="#F64242"
-                                            android:textSize="16sp"
+                                            android:textSize="18sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="parent" />
@@ -545,9 +556,11 @@
 
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/background">
 
                                         <androidx.cardview.widget.CardView
+                                            android:id="@+id/shrimadbhgwat_geeta_spotify"
                                             android:layout_width="45sp"
                                             android:layout_height="45sp"
                                             android:layout_marginEnd="10dp"
@@ -559,7 +572,8 @@
 
                                             <androidx.constraintlayout.widget.ConstraintLayout
                                                 android:layout_width="match_parent"
-                                                android:layout_height="match_parent">
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/background_blue">
 
                                                 <ImageView
                                                     android:layout_width="match_parent"
@@ -583,9 +597,9 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="20dp"
                                             android:fontFamily="@font/andika"
-                                            android:text="Aarti Sangrah"
+                                            android:text="श्रीमद्भगवद्गीता"
                                             android:textColor="#F64242"
-                                            android:textSize="16sp"
+                                            android:textSize="18sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="parent" />
@@ -611,9 +625,11 @@
 
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/background">
 
                                         <androidx.cardview.widget.CardView
+                                            android:id="@+id/krishna_leela_spotify"
                                             android:layout_width="45sp"
                                             android:layout_height="45sp"
                                             android:layout_marginEnd="10dp"
@@ -625,7 +641,8 @@
 
                                             <androidx.constraintlayout.widget.ConstraintLayout
                                                 android:layout_width="match_parent"
-                                                android:layout_height="match_parent">
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/background_blue">
 
                                                 <ImageView
                                                     android:layout_width="match_parent"
@@ -649,9 +666,9 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="20dp"
                                             android:fontFamily="@font/andika"
-                                            android:text="Aarti Sangrah"
+                                            android:text="श्री कृष्ण लीला"
                                             android:textColor="#F64242"
-                                            android:textSize="16sp"
+                                            android:textSize="18sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="parent" />

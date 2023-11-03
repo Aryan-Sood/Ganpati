@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView mainText;
 
-    ImageView image, buttonTest;
+    ImageView image;
+    CardView aarti_spotify, chalisha_spotify, shiv_tandav_spotify, krishna_leela_spotify, shrimadbhgwat_geeta_spotify;
     StorageReference reference;
     ScrollView scrollView;
 
@@ -60,10 +61,18 @@ public class MainActivity extends AppCompatActivity {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         reference = FirebaseStorage.getInstance().getReference("images/ganesh.png");
         scrollView = findViewById(R.id.scrollView);
-        buttonTest = findViewById(R.id.buttonTest);
-
         image = findViewById(R.id.imageView4);
         viewPager = findViewById(R.id.viewPager);
+
+        //Spotify
+        aarti_spotify = findViewById(R.id.aarti_spotify);
+        shiv_tandav_spotify = findViewById(R.id.shiv_tandav_spotify);
+        chalisha_spotify = findViewById(R.id.chalisha_spotify);
+        krishna_leela_spotify = findViewById(R.id.krishna_leela_spotify);
+        shrimadbhgwat_geeta_spotify = findViewById(R.id.shrimadbhgwat_geeta_spotify);
+
+
+
 
         DatabaseReference ref = database.getReference().child("Aarti");
 
@@ -86,6 +95,46 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        //Spotify Song Link
+        aarti_spotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotourl("https://open.spotify.com/playlist/6NltPE7H3tit05CUloVPmW");
+            }
+        });
+
+        shiv_tandav_spotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotourl("https://open.spotify.com/show/7kXTwW1xCVei6efFjQgINx");
+            }
+        });
+
+
+        chalisha_spotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotourl("https://open.spotify.com/track/6H7fLdt0AeWpuxUKXuXWrx");
+            }
+        });
+
+        krishna_leela_spotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotourl("https://open.spotify.com/show/7kXTwW1xCVei6efFjQgINx");
+            }
+        });
+
+
+        shrimadbhgwat_geeta_spotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotourl("https://open.spotify.com/episode/7cUOuLoBAEWnUjSuEQT8Zk");
+            }
+        });
+
+
+
 
 
         //checkOffset();
@@ -96,12 +145,6 @@ public class MainActivity extends AppCompatActivity {
         CardView setting = findViewById(R.id.cardView);
         setting.setOnClickListener(view -> setting());
 
-        buttonTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotourl("https://open.spotify.com/track/0TK2YIli7K1leLovkQiNik?si=8e7f5562396b4db4");
-            }
-        });
 
         try {
             File file = File.createTempFile("tempfile", ".png");
