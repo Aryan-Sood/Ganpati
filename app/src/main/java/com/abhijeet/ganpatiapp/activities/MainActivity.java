@@ -100,6 +100,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 gotourl("https://open.spotify.com/playlist/6NltPE7H3tit05CUloVPmW");
+
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(50);
+                    }
+                }
             }
         });
 
@@ -107,6 +116,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 gotourl("https://open.spotify.com/show/7kXTwW1xCVei6efFjQgINx");
+
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(50);
+                    }
+                }
             }
         });
 
@@ -115,6 +133,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 gotourl("https://open.spotify.com/track/6H7fLdt0AeWpuxUKXuXWrx");
+
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(50);
+                    }
+                }
             }
         });
 
@@ -122,6 +149,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 gotourl("https://open.spotify.com/show/7kXTwW1xCVei6efFjQgINx");
+
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(50);
+                    }
+                }
             }
         });
 
@@ -130,11 +166,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 gotourl("https://open.spotify.com/episode/7cUOuLoBAEWnUjSuEQT8Zk");
+
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(50);
+                    }
+                }
             }
         });
-
-
-
 
 
         //checkOffset();
