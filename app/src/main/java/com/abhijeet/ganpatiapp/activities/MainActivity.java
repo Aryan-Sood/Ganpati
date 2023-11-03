@@ -72,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
         shrimadbhgwat_geeta_spotify = findViewById(R.id.shrimadbhgwat_geeta_spotify);
 
 
-
-
         DatabaseReference ref = database.getReference().child("Aarti");
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());

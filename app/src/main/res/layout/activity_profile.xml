@@ -13,9 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="-15dp"
         android:layout_marginTop="-50dp"
-        android:layout_marginEnd="-15dp"
         android:src="@drawable/traingle"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -256,6 +254,20 @@
         app:layout_constraintBottom_toTopOf="@+id/materialCardView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/materialCardView5" />
+        app:layout_constraintTop_toTopOf="@+id/materialCardView5">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_blue">
+
+            <ImageView
+                android:id="@id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
