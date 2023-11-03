@@ -288,7 +288,7 @@
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@drawable/background">
+                                        android:background="#C3FF5722">
 
                                         <androidx.cardview.widget.CardView
                                             android:id="@+id/aarti_spotify"
@@ -329,7 +329,7 @@
                                             android:layout_marginStart="20dp"
                                             android:fontFamily="@font/andika"
                                             android:text="आरती संग्रह ऑडियो सूची"
-                                            android:textColor="#F64242"
+                                            android:textColor="#222222"
                                             android:textSize="18sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
@@ -355,7 +355,7 @@
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@drawable/background">
+                                        android:background="#C3FF5722">
 
                                         <androidx.cardview.widget.CardView
                                             android:id="@+id/chalisha_spotify"
@@ -398,7 +398,7 @@
                                             android:layout_marginStart="20dp"
                                             android:fontFamily="@font/andika"
                                             android:text="चालीसा ऑडियो सूची"
-                                            android:textColor="#F64242"
+                                            android:textColor="#222222"
                                             android:textSize="18sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
@@ -424,7 +424,7 @@
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@drawable/background">
+                                        android:background="#C3FF5722">
 
                                         <androidx.cardview.widget.CardView
                                             android:id="@+id/shiv_tandav_spotify"
@@ -465,7 +465,7 @@
                                             android:layout_marginStart="20dp"
                                             android:fontFamily="@font/andika"
                                             android:text="शिव तांडव ऑडियो"
-                                            android:textColor="#F64242"
+                                            android:textColor="#222222"
                                             android:textSize="18sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
@@ -491,7 +491,7 @@
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@drawable/background">
+                                        android:background="#C3FF5722">
 
                                         <androidx.cardview.widget.CardView
                                             android:layout_width="45sp"
@@ -531,7 +531,7 @@
                                             android:layout_marginStart="20dp"
                                             android:fontFamily="@font/andika"
                                             android:text="Aarti Sangrah"
-                                            android:textColor="#F64242"
+                                            android:textColor="#222222"
                                             android:textSize="18sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
@@ -557,7 +557,7 @@
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@drawable/background">
+                                        android:background="#C3FF5722">
 
                                         <androidx.cardview.widget.CardView
                                             android:id="@+id/shrimadbhgwat_geeta_spotify"
@@ -598,7 +598,7 @@
                                             android:layout_marginStart="20dp"
                                             android:fontFamily="@font/andika"
                                             android:text="श्रीमद्भगवद्गीता"
-                                            android:textColor="#F64242"
+                                            android:textColor="#222222"
                                             android:textSize="18sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
@@ -626,7 +626,7 @@
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@drawable/background">
+                                        android:background="#C3FF5722">
 
                                         <androidx.cardview.widget.CardView
                                             android:id="@+id/krishna_leela_spotify"
@@ -667,7 +667,7 @@
                                             android:layout_marginStart="20dp"
                                             android:fontFamily="@font/andika"
                                             android:text="श्री कृष्ण लीला"
-                                            android:textColor="#F64242"
+                                            android:textColor="#222222"
                                             android:textSize="18sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
