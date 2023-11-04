@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         shiv_tandav_spotify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotourl("https://open.spotify.com/show/7kXTwW1xCVei6efFjQgINx");
+                gotourl("https://open.spotify.com/track/6NFAlpTFpLrYBrsFuiloH3");
 
                 Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 if (vibrator != null) {
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         shrimadbhgwat_geeta_spotify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotourl("https://open.spotify.com/episode/7cUOuLoBAEWnUjSuEQT8Zk");
+                gotourl("https://open.spotify.com/show/1mRVXlmxdS0X1n4NkG3kU6?si=UE6ljIk8RdOVIrpX7BRTKQ");
 
                 Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 if (vibrator != null) {

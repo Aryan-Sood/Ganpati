@@ -55,7 +55,7 @@ public class Profile extends AppCompatActivity {
         //phoneTextView = findViewById(R.id.textView12);
         //addressTextView = findViewById(R.id.textView13);
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        reference = FirebaseStorage.getInstance().getReference("images/ganesh.png");
+        reference = FirebaseStorage.getInstance().getReference("profile/profile.png");
         image = findViewById(R.id.imageView4);
 
 
