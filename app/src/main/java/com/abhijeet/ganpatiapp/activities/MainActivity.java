@@ -210,6 +210,9 @@ public class MainActivity extends AppCompatActivity {
     public void profile(){
         Intent intent = new Intent(MainActivity.this, Profile.class);
         startActivity(intent);
+// for animation
+        overridePendingTransition(R.anim.slide_in_left,R.anim.stay);
+// for vibration
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -223,6 +226,9 @@ public class MainActivity extends AppCompatActivity {
     public void setting(){
         Intent intent = new Intent(MainActivity.this, settings.class);
         startActivity(intent);
+// for animation
+        overridePendingTransition(R.anim.slide_in_right,R.anim.stay);
+// for vibration
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

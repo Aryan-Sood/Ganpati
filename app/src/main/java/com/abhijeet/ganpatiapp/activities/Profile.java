@@ -112,6 +112,9 @@ public class Profile extends AppCompatActivity {
     public void back(){
         Intent intent = new Intent(Profile.this, MainActivity.class);
         startActivity(intent);
+// for animation
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+// for vibration
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -120,5 +123,13 @@ public class Profile extends AppCompatActivity {
                 vibrator.vibrate(50);
             }
         }
+    }
+
+
+    @Override
+    public void finish() {
+        super.finish();
+// for animation
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 }
