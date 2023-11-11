@@ -84,6 +84,9 @@ public class settings extends AppCompatActivity {
     public void back(){
         Intent intent = new Intent(settings.this, MainActivity.class);
         startActivity(intent);
+// for animation
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+// for vibration
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -93,4 +96,13 @@ public class settings extends AppCompatActivity {
             }
         }
     }
+
+
+    @Override
+    public void finish() {
+        super.finish();
+        // for animation
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
 }
