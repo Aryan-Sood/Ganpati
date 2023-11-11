@@ -1,5 +1,6 @@
 package com.abhijeet.ganpatiapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.abhijeet.ganpatiapp.R;
+import com.abhijeet.ganpatiapp.activities.Kundali_entry;
 
 public class KundaliFragment extends Fragment {
 
@@ -39,7 +41,8 @@ public class KundaliFragment extends Fragment {
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "yay", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), Kundali_entry.class);
+                v.getContext().startActivity(intent);
             }
         });
 

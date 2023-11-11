@@ -1,5 +1,6 @@
 package com.abhijeet.ganpatiapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.abhijeet.ganpatiapp.R;
+import com.abhijeet.ganpatiapp.activities.Aarti_list;
+import com.abhijeet.ganpatiapp.activities.Aarti_view;
 
 
 public class AartiFragment extends Fragment {
@@ -41,7 +44,9 @@ public class AartiFragment extends Fragment {
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "yay", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), Aarti_list.class);
+                intent.putExtra("name","Aarti Sangrah");
+                v.getContext().startActivity(intent);
             }
         });
 
