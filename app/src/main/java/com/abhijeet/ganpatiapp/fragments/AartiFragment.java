@@ -17,6 +17,8 @@ import com.abhijeet.ganpatiapp.R;
 
 public class AartiFragment extends Fragment {
 
+    TextView text;
+
 
 
     public AartiFragment() {
@@ -28,5 +30,21 @@ public class AartiFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_aarti, container, false);
+    }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        text = view.findViewById(R.id.fragmentText);
+
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "yay", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        super.onViewCreated(view, savedInstanceState);
     }
 }
