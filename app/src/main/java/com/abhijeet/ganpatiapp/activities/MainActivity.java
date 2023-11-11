@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
     ViewPager viewPager;
 
+    View view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,28 +67,28 @@ public class MainActivity extends AppCompatActivity {
         image = findViewById(R.id.imageView4);
         viewPager = findViewById(R.id.viewPager);
 
+
         DatabaseReference ref = database.getReference().child("Aarti");
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(),getApplicationContext());
         viewPager.setAdapter(adapter);
+
+        View itemView = viewPager.getChildAt(viewPager.getCurrentItem());
+
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 if (viewPager.getCurrentItem()<2){
-                    viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+                    viewPager.setCurrentItem(viewPager.getCurrentItem()+1,true);
                 }
                 else{
-                    viewPager.setCurrentItem(0);
+                    viewPager.setCurrentItem(0,true);
                 }
-                handler.postDelayed(this::run,4000);
+                handler.postDelayed(this,4000);
             }
         },4000);
-
-
-
-
 
         //checkOffset();
 
@@ -121,7 +123,21 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        if (itemView!=null){
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(MainActivity.this, "yay", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        else{
+            Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();
+        }
+
     }
+
+
 
 
     public void profile(){
