@@ -3,17 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="250sp"
+    android:layout_height="match_parent"
     tools:context=".fragments.AartiFragment"
     android:background="#7AE42F">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="250sp">
+        android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="250sp"
+            android:id="@+id/fragmentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Aarti"
             android:textSize="30sp"
             android:textColor="@color/black"

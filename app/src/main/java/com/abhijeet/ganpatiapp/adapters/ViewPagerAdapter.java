@@ -54,10 +54,15 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View itemView = inflater.inflate(R.layout.fragment_aarti, container, false);
+
+        itemView.findViewById(R.id.fragmentText).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "yay", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return super.instantiateItem(container, position);
-
-
-
 
 
     }

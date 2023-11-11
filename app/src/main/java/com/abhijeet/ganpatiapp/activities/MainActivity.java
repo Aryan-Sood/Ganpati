@@ -60,14 +60,14 @@ public class MainActivity extends AppCompatActivity {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         reference = FirebaseStorage.getInstance().getReference("images/ganesh.png");
         scrollView = findViewById(R.id.scrollView);
-        buttonTest = findViewById(R.id.buttonTest);
+//        buttonTest = findViewById(R.id.buttonTest);
 
         image = findViewById(R.id.imageView4);
         viewPager = findViewById(R.id.viewPager);
 
         DatabaseReference ref = database.getReference().child("Aarti");
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(),getApplicationContext());
         viewPager.setAdapter(adapter);
 
         Handler handler = new Handler();
@@ -96,12 +96,6 @@ public class MainActivity extends AppCompatActivity {
         CardView setting = findViewById(R.id.cardView);
         setting.setOnClickListener(view -> setting());
 
-        buttonTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotourl("https://open.spotify.com/track/0TK2YIli7K1leLovkQiNik?si=8e7f5562396b4db4");
-            }
-        });
 
         try {
             File file = File.createTempFile("tempfile", ".png");
