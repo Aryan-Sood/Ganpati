@@ -1,7 +1,11 @@
 package com.abhijeet.ganpatiapp.adapters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +49,9 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+// setting vibration for 50ms.
+                vibrate(v.getContext(), 50);
+
                 Intent intent = new Intent(v.getContext(), Aarti_view.class);
                 intent.putExtra("name", name);
                 v.getContext().startActivity(intent);
@@ -60,7 +67,7 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView nameView;
-        private ImageView image;
+       // private ImageView image;
         private MaterialDivider divider;
 
         public ViewHolder(@NonNull View itemView) {
@@ -68,13 +75,26 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
 
             nameView = itemView.findViewById(R.id.textView21);
             divider = itemView.findViewById(R.id.materialDivider);
-            image = itemView.findViewById(R.id.god_image);
+           // image = itemView.findViewById(R.id.god_image);
 
         }
 
         public void setData(Bitmap b, String name) {
             nameView.setText(name);
-            image.setImageBitmap(b);
+            //image.setImageBitmap(b);
         }
     }
+//Vibrate while selecting the aarti.
+    public static void vibrate(Context context, long milliseconds) {
+        Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vibrator.vibrate(VibrationEffect.createOneShot(milliseconds, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                // Deprecated in API 26 (Oreo) but still works for earlier versions
+                vibrator.vibrate(milliseconds);
+            }
+        }
+    }
+
 }
