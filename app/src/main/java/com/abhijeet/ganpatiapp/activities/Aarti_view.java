@@ -1,5 +1,7 @@
 package com.abhijeet.ganpatiapp.activities;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -8,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -40,16 +43,19 @@ public class Aarti_view extends AppCompatActivity {
         String value = intent.getStringExtra("name");
         name.setText(value);
 
-
-
+        Log.d(TAG, "onCreate:first ");
         reference = FirebaseDatabase.getInstance().getReference().child("Aarti").child(value);
 
-        reference.addValueEventListener(new ValueEventListener() {
+        Log.d(TAG, "onCreate: second");
+
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d(TAG, "onDataChange: third");
                 String x = snapshot.getValue(String.class);
                 String y = x.replace("@","\n");
                 aarti.setText(y);
+                Log.d(TAG, "onDataChange: fourth");
             }
 
             @Override
@@ -57,6 +63,8 @@ public class Aarti_view extends AppCompatActivity {
 
             }
         });
+
+        Log.d(TAG, "onCreate: fifth");
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

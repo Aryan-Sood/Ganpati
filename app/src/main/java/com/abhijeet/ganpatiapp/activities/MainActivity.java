@@ -80,12 +80,9 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     viewPager.setCurrentItem(0);
                 }
-                handler.postDelayed(this::run,4000);
+                handler.postDelayed(this::run,7000);
             }
-        },4000);
-
-
-
+        },7000);
 
 
         //checkOffset();

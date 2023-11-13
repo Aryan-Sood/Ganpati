@@ -8,9 +8,8 @@ public class Aarti_List_Model_Class {
 
     private String name;
 
-    public Aarti_List_Model_Class(Bitmap bitmap, String name) {
+    public Aarti_List_Model_Class(String name) {
         this.name = name;
-        this.image = bitmap;
     }
 
     public String getName() {

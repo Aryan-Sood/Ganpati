@@ -44,7 +44,7 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
         String name = list.get(position).getName();
         Bitmap bitmap = list.get(position).getImage();
 
-        holder.setData(bitmap,name);
+        holder.setData(name);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +79,7 @@ public class Aarti_List_Adapter extends RecyclerView.Adapter<Aarti_List_Adapter.
 
         }
 
-        public void setData(Bitmap b, String name) {
+        public void setData(String name) {
             nameView.setText(name);
             //image.setImageBitmap(b);
         }

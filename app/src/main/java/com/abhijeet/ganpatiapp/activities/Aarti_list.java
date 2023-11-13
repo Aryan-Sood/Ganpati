@@ -23,7 +23,6 @@ import com.abhijeet.ganpatiapp.adapters.Aarti_List_Adapter;
 import com.abhijeet.ganpatiapp.modelclass.Aarti_List_Model_Class;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,13 +40,13 @@ import java.util.List;
 public class Aarti_list extends AppCompatActivity {
     CardView backButton;
     FirebaseDatabase database;
-    DatabaseReference ref;
+    DatabaseReference reference;
     RecyclerView aartiRecyclerView;
     LinearLayoutManager layoutManager;
     List<Aarti_List_Model_Class> list;
     Aarti_List_Adapter adapter;
 
-    StorageReference reference;
+    StorageReference ref2;
     Bitmap bitmap;
 
     ImageView image2;
@@ -60,10 +59,37 @@ public class Aarti_list extends AppCompatActivity {
         backButton = findViewById(R.id.materialCardView4);
         aartiRecyclerView = findViewById(R.id.aartiRecyclerView);
 
+        list = new ArrayList<>();
+
         database = FirebaseDatabase.getInstance();
-        ref = FirebaseDatabase.getInstance().getReference().child("Aarti");
-        reference = FirebaseStorage.getInstance().getReference("images/vishnu.png");
+        ref2 = FirebaseStorage.getInstance().getReference("images/vishnu.png");
 //        image2 = findViewById(R.id.imageView2);
+        reference = FirebaseDatabase.getInstance().getReference().child("Aarti");
+
+        Log.d(TAG, "onCreate: first print");
+
+        Log.d(TAG, "onCreate: second print");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d(TAG, "onDataChange: third");
+//                list.add(new Aarti_List_Model_Class(convertToBitmap(),reference.));
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    list.add(new Aarti_List_Model_Class(ds.getKey().toString()));
+                    Log.d(TAG, "onDataChange: " + ds.getKey().toString());
+                }
+                Log.d(TAG, "onDataChange: fourth");
+                initRecyclerView();
+                Log.d(TAG, "onDataChange: fifth");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        Log.d(TAG, "onCreate: sixth");
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +100,6 @@ public class Aarti_list extends AppCompatActivity {
 
 
 //        fetchImages();
-        initData();
     }
 
     public void initRecyclerView() {
@@ -85,26 +110,6 @@ public class Aarti_list extends AppCompatActivity {
         adapter = new Aarti_List_Adapter(list);
         aartiRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-    }
-
-    public void initData() {
-        list = new ArrayList<>();
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    list.add(new Aarti_List_Model_Class(convertToBitmap(),ds.getKey().toString()));
-                    Log.d(TAG, "onDataChange: " + ds.getKey().toString());
-                }
-                initRecyclerView();
-//                Toast.makeText(Aarti_list.this, "done", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 
     @Override
@@ -121,7 +126,7 @@ public class Aarti_list extends AppCompatActivity {
     public void fetchImages() {
         try {
             File file = File.createTempFile("vishnu", ".png");
-            reference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+            ref2.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                      bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());

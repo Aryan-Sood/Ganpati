@@ -39,9 +39,7 @@ public class AartiFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        text = view.findViewById(R.id.fragmentText);
-
-        text.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), Aarti_list.class);
@@ -49,6 +47,7 @@ public class AartiFragment extends Fragment {
                 v.getContext().startActivity(intent);
             }
         });
+
 
         super.onViewCreated(view, savedInstanceState);
     }
