@@ -6,11 +6,16 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +30,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Base64;
+
 public class settings extends AppCompatActivity {
 
     CardView logOutCard;
@@ -35,6 +42,7 @@ public class settings extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
     TextView name,address,email,phone;
+    ImageView profilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +55,7 @@ public class settings extends AppCompatActivity {
         email = findViewById(R.id.textView24);
         phone = findViewById(R.id.textView25);
         addPictureButton = findViewById(R.id.addPictureButton);
+        profilePicture = findViewById(R.id.profilePicture);
 
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -54,6 +63,11 @@ public class settings extends AppCompatActivity {
 
         CardView back = findViewById(R.id.backButton);
         back.setOnClickListener(view -> back());
+
+
+        loadProfileImage();
+
+
 
         addPictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,12 +125,33 @@ public class settings extends AppCompatActivity {
         }
     }
 
-
     @Override
     public void finish() {
         super.finish();
         // for animation
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
+    public void loadProfileImage(){
+        try {
+            SharedPreferences sharedPreferences = getSharedPreferences("userData",MODE_PRIVATE);
+            String profile = sharedPreferences.getString("profilePicture",null);
+            profilePicture.setImageBitmap(stringToBitmap(profile));
+        }
+
+        catch (Exception e){
+            Log.d("error", "loadProfileImage: " + e.getMessage());
+        }
+    }
+
+    public Bitmap stringToBitmap(String s) {
+        byte image[] = new byte[0];
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            image = Base64.getDecoder().decode(s);
+        }
+        Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+        return bitmap;
     }
 
 }

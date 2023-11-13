@@ -1,6 +1,7 @@
 package com.abhijeet.ganpatiapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,7 @@ import com.abhijeet.ganpatiapp.R;
 
 public class Kundali_entry extends AppCompatActivity {
 
-    ImageView backButton;
+    CardView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
