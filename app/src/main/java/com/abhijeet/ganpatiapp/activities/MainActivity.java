@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseDatabase database;
 
+    CardView chat;
     TextView mainText;
 
     ImageView image, buttonTest;
@@ -54,13 +55,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//whatshapp
+        chat = findViewById(R.id.whatshapp_icon);
 
         mainText = findViewById(R.id.mainText);
         database = FirebaseDatabase.getInstance();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         reference = FirebaseStorage.getInstance().getReference("images/ganesh.png");
         scrollView = findViewById(R.id.scrollView);
-//        buttonTest = findViewById(R.id.buttonTest);
+//      buttonTest = findViewById(R.id.buttonTest);
 
         image = findViewById(R.id.imageView4);
         viewPager = findViewById(R.id.viewPager);
@@ -92,6 +95,15 @@ public class MainActivity extends AppCompatActivity {
 
         CardView setting = findViewById(R.id.cardView);
         setting.setOnClickListener(view -> setting());
+
+
+//whatshapp
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotourl("https://wa.me/+917255017217");
+            }
+        });
 
 
         try {
@@ -148,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 
 
 

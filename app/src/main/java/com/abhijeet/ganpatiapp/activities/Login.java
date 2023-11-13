@@ -42,11 +42,11 @@ public class Login extends AppCompatActivity {
 
     EditText email, password;
     CardView loginButton, signUpCard;
-    MaterialCardView googleSignInCard;
+   // MaterialCardView googleSignInCard;
 
     FirebaseAuth firebaseAuth;
 
-    GoogleSignInClient client;
+  //  GoogleSignInClient client;
 
     FirebaseDatabase database;
 
@@ -60,7 +60,7 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.editText2);
         loginButton = findViewById(R.id.signInButton);
         signUpCard = findViewById(R.id.signUpCard);
-        googleSignInCard = findViewById(R.id.googleSignInCard);
+       // googleSignInCard = findViewById(R.id.googleSignInCard);
 
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -70,7 +70,7 @@ public class Login extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
-        client = GoogleSignIn.getClient(this, options);
+     //   client = GoogleSignIn.getClient(this, options);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +108,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        googleSignInCard.setOnClickListener(new View.OnClickListener() {
+      /*  googleSignInCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = client.getSignInIntent();
@@ -122,7 +122,7 @@ public class Login extends AppCompatActivity {
                     }
                 }
             }
-        });
+        });*/
 
         signUpCard.setOnClickListener(new View.OnClickListener() {
             @Override
