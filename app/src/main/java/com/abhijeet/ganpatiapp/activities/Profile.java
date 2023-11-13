@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.abhijeet.ganpatiapp.R;
@@ -14,6 +15,7 @@ import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +48,7 @@ public class Profile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_profile);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -78,9 +81,6 @@ public class Profile extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
 
 
         CardView back = findViewById(R.id.materialCardView6);
