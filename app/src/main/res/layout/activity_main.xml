@@ -693,7 +693,7 @@
     </ScrollView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/whatshapp"
+        android:id="@+id/whatshapp_icon"
         android:layout_width="50sp"
         android:layout_height="50sp"
         android:layout_marginEnd="25dp"
