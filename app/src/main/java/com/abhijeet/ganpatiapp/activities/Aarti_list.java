@@ -56,7 +56,7 @@ public class Aarti_list extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aarti_list);
 
-        backButton = findViewById(R.id.materialCardView4);
+        backButton = findViewById(R.id.backButton);
         aartiRecyclerView = findViewById(R.id.aartiRecyclerView);
 
         list = new ArrayList<>();

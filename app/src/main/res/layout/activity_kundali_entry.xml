@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@id/materialCardView4"
+        android:id="@id/backButton"
         android:layout_width="40sp"
         android:layout_height="40sp"
         android:layout_marginStart="20dp"
@@ -60,10 +60,10 @@
         android:textAlignment="center"
         android:textColor="#121212"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/materialCardView4"
+        app:layout_constraintBottom_toBottomOf="@+id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/materialCardView4" />
+        app:layout_constraintTop_toTopOf="@+id/backButton" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView3"

@@ -12,8 +12,12 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.abhijeet.ganpatiapp.R;
+import com.abhijeet.ganpatiapp.bottomsheets.pictureFragment;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 public class settings extends AppCompatActivity {
 
     CardView logOutCard;
+    MaterialCardView addPictureButton;
 
     FirebaseAuth firebaseAuth;
 
@@ -41,13 +46,22 @@ public class settings extends AppCompatActivity {
         address = findViewById(R.id.textView23);
         email = findViewById(R.id.textView24);
         phone = findViewById(R.id.textView25);
+        addPictureButton = findViewById(R.id.addPictureButton);
 
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         reference = FirebaseDatabase.getInstance().getReference().child("Users").child(firebaseAuth.getUid());
 
-        CardView back = findViewById(R.id.materialCardView4);
+        CardView back = findViewById(R.id.backButton);
         back.setOnClickListener(view -> back());
+
+        addPictureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomSheetDialogFragment bottomSheetDialogFragment = new pictureFragment();
+                bottomSheetDialogFragment.show(getSupportFragmentManager(),bottomSheetDialogFragment.getTag());
+            }
+        });
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override

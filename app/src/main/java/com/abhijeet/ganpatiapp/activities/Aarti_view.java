@@ -35,7 +35,7 @@ public class Aarti_view extends AppCompatActivity {
 
         name = findViewById(R.id.textView17);
         aarti = findViewById(R.id.aarti);
-        backButton = findViewById(R.id.materialCardView4);
+        backButton = findViewById(R.id.backButton);
 
         database = FirebaseDatabase.getInstance();
 
