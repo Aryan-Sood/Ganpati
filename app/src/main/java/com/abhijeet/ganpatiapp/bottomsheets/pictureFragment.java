@@ -2,6 +2,8 @@ package com.abhijeet.ganpatiapp.bottomsheets;
 
 import static android.app.Activity.RESULT_OK;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,9 +23,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.abhijeet.ganpatiapp.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -43,6 +45,8 @@ public class pictureFragment extends BottomSheetDialogFragment {
 
     transferPicture instance;
 
+    String personalUID="";
+
     public pictureFragment(transferPicture picture) {
         this.instance=picture;
     }
@@ -61,6 +65,8 @@ public class pictureFragment extends BottomSheetDialogFragment {
 
         cameraIcon = view.findViewById(R.id.imageView9);
         galleryIcon = view.findViewById(R.id.imageView10);
+
+        setCurrentUID();
 
 
         cameraIcon.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +89,17 @@ public class pictureFragment extends BottomSheetDialogFragment {
 
     }
 
+    private void setCurrentUID() {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        try {
+            personalUID = firebaseUser.getUid();
+        }
+        catch (Exception e){
+            Log.d(TAG, "setCurrentUID: " + e.getMessage());
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -91,8 +108,6 @@ public class pictureFragment extends BottomSheetDialogFragment {
             if (requestCode == CAMERA_REQ_CODE) {
                 Log.d("running", "onActivityResult: camera ran");
                 Bitmap img = (Bitmap) (data.getExtras().get("data"));
-
-                Uri uri = (Uri) (data.getExtras().get("data"));
 
 
                 image = convertBitmapToByteArray(img);
@@ -112,7 +127,8 @@ public class pictureFragment extends BottomSheetDialogFragment {
                     Toast.makeText(getContext(), "null", Toast.LENGTH_SHORT).show();
 
                 }
-                uploadImageToFirebase(uri);
+                uploadBitmapImage(img);
+//                uploadImageToFirebase(uri);
                 dismiss();
             }
 
@@ -131,7 +147,7 @@ public class pictureFragment extends BottomSheetDialogFragment {
                     else {
                         Toast.makeText(getContext(), "null", Toast.LENGTH_SHORT).show();
                     }
-                    uploadImageToFirebase(imageUri);
+                    uploadUriImage(imageUri);
                     dismiss();
                 }
             }
@@ -171,20 +187,34 @@ public class pictureFragment extends BottomSheetDialogFragment {
         void transferImage(String image);
     }
 
-    public void uploadImageToFirebase(Uri uri){
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference("profile/");
+//    public void uploadImageToFirebase(Uri uri){
+//        FirebaseStorage storageReference = FirebaseStorage.getInstance();
+//
+//        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                Toast.makeText(getContext(), "Uploaded", Toast.LENGTH_SHORT).show();
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
-        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(getContext(), "Uploaded", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
+    public void uploadBitmapImage(Bitmap bitmap){
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profileData").child(personalUID).child("profileimage.jpg");
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = storageReference.putBytes(data);
+    }
+
+    public void uploadUriImage(Uri uri){
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profileData").child(personalUID).child("profileimage.jpg");
+        UploadTask uploadTask = storageReference.putFile(uri);
     }
 
 

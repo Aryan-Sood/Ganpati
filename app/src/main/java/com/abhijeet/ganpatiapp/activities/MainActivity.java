@@ -1,8 +1,11 @@
 package com.abhijeet.ganpatiapp.activities;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -16,6 +19,8 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
@@ -28,14 +33,20 @@ import androidx.viewpager.widget.ViewPager;
 import com.abhijeet.ganpatiapp.adapters.ViewPagerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     StorageReference reference;
     ScrollView scrollView;
     ViewPager viewPager;
+    String personalUID="";
 
     CardView aarti_spotify, chalisha_spotify, shiv_tandav_spotify, krishna_leela_spotify, shrimadbhgwat_geeta_spotify;
 
@@ -67,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
 
         image = findViewById(R.id.imageView4);
         viewPager = findViewById(R.id.viewPager);
+
+        setCurrentUID();
+
+        checkAndSetProfileImage();
 
         //Spotify
         aarti_spotify = findViewById(R.id.aarti_spotify);
@@ -282,5 +298,68 @@ public class MainActivity extends AppCompatActivity {
     public void gotourl(String s){
         Uri uri = Uri.parse(s);
         startActivity(new Intent(Intent.ACTION_VIEW, uri));
+    }
+
+    private void setCurrentUID() {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        try {
+            personalUID = firebaseUser.getUid();
+        }
+        catch (Exception e){
+            Log.d(TAG, "setCurrentUID: " + e.getMessage());
+        }
+    }
+
+    public void checkAndSetProfileImage(){
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+        StorageReference storageReference = firebaseStorage.getReference().child("profileData");
+
+//        Log.d("TAG", "checkAndSetProfileImage: yayyy");
+
+        storageReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+            @Override
+            public void onSuccess(ListResult listResult) {
+//                Log.d("TAG", "onSuccess: step");
+                Toast.makeText(MainActivity.this, "size is: " + listResult.getPrefixes().size(), Toast.LENGTH_SHORT).show();
+                for (StorageReference item: listResult.getPrefixes()){
+                    Log.d("TAG", item.getName());
+                    Log.d("TAG", "token is :" + personalUID);
+                    if (item.getName().equals(personalUID)){
+                        Log.d("TAG", "onSuccess: user  found");
+                        item.child("profileimage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                SharedPreferences sharedPreferences = getSharedPreferences("userData",MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("profilePicture",UriToString(uri));
+                                editor.commit();
+                            }
+                        });
+                    }
+
+                    else{
+                        Log.d("TAG", "onSuccess: user not found");
+                    }
+                }
+//                Log.d("TAG", "final");
+            }
+        });
+
+    }
+
+
+    public String UriToString(Uri uri){
+        try {
+            InputStream imageStream = getApplicationContext().getContentResolver().openInputStream(uri);
+            Bitmap bitmap = BitmapFactory.decodeStream(imageStream);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream.toByteArray();
+            return Base64.encodeToString(byteArray, Base64.DEFAULT);
+        } catch (FileNotFoundException e) {
+            Log.e("ImageUtils", "File not found: " + e.getMessage());
+            return null;
+        }
     }
 }
