@@ -40,15 +40,15 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 
     FirebaseDatabase database;
-
     CardView chat;
     TextView mainText;
 
     ImageView image, buttonTest;
     StorageReference reference;
     ScrollView scrollView;
-
     ViewPager viewPager;
+
+    CardView aarti_spotify, chalisha_spotify, shiv_tandav_spotify, krishna_leela_spotify, shrimadbhgwat_geeta_spotify;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
         image = findViewById(R.id.imageView4);
         viewPager = findViewById(R.id.viewPager);
 
+        //Spotify
+        aarti_spotify = findViewById(R.id.aarti_spotify);
+        shiv_tandav_spotify = findViewById(R.id.shiv_tandav_spotify);
+        chalisha_spotify = findViewById(R.id.chalisha_spotify);
+        krishna_leela_spotify = findViewById(R.id.krishna_leela_spotify);
+        shrimadbhgwat_geeta_spotify = findViewById(R.id.shrimadbhgwat_geeta_spotify);
+
+
         DatabaseReference ref = database.getReference().child("Aarti");
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(),getApplicationContext());
@@ -86,6 +94,92 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(this::run,7000);
             }
         },7000);
+
+
+
+        //Spotify Song Link
+        aarti_spotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotourl("https://open.spotify.com/playlist/6NltPE7H3tit05CUloVPmW");
+
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(50);
+                    }
+                }
+            }
+        });
+
+        shiv_tandav_spotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotourl("https://open.spotify.com/show/7kXTwW1xCVei6efFjQgINx");
+
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(50);
+                    }
+                }
+            }
+        });
+
+
+        chalisha_spotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotourl("https://open.spotify.com/track/6H7fLdt0AeWpuxUKXuXWrx");
+
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(50);
+                    }
+                }
+            }
+        });
+
+        krishna_leela_spotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotourl("https://open.spotify.com/show/7kXTwW1xCVei6efFjQgINx");
+
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(50);
+                    }
+                }
+            }
+        });
+
+
+        shrimadbhgwat_geeta_spotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotourl("https://open.spotify.com/episode/7cUOuLoBAEWnUjSuEQT8Zk");
+
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(50);
+                    }
+                }
+            }
+        });
+
 
 
         //checkOffset();
