@@ -21,7 +21,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.abhijeet.ganpatiapp.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Base64;
@@ -87,6 +92,8 @@ public class pictureFragment extends BottomSheetDialogFragment {
                 Log.d("running", "onActivityResult: camera ran");
                 Bitmap img = (Bitmap) (data.getExtras().get("data"));
 
+                Uri uri = (Uri) (data.getExtras().get("data"));
+
 
                 image = convertBitmapToByteArray(img);
                 SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userData", Context.MODE_PRIVATE);
@@ -105,7 +112,7 @@ public class pictureFragment extends BottomSheetDialogFragment {
                     Toast.makeText(getContext(), "null", Toast.LENGTH_SHORT).show();
 
                 }
-
+                uploadImageToFirebase(uri);
                 dismiss();
             }
 
@@ -124,6 +131,7 @@ public class pictureFragment extends BottomSheetDialogFragment {
                     else {
                         Toast.makeText(getContext(), "null", Toast.LENGTH_SHORT).show();
                     }
+                    uploadImageToFirebase(imageUri);
                     dismiss();
                 }
             }
@@ -161,6 +169,22 @@ public class pictureFragment extends BottomSheetDialogFragment {
 
     public interface transferPicture{
         void transferImage(String image);
+    }
+
+    public void uploadImageToFirebase(Uri uri){
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference("profile/");
+
+        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(getContext(), "Uploaded", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

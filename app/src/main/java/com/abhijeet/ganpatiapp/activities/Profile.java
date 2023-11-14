@@ -64,23 +64,23 @@ public class Profile extends AppCompatActivity {
 
         // setting image in image view from firebase.
 
-        try {
-            File file = File.createTempFile("tempfile", ".png");
-            reference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-                    image.setImageBitmap(bitmap);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(Profile.this, "error", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            File file = File.createTempFile("tempfile", ".png");
+//            reference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+//                @Override
+//                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+//                    Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+//                    image.setImageBitmap(bitmap);
+//                }
+//            }).addOnFailureListener(new OnFailureListener() {
+//                @Override
+//                public void onFailure(@NonNull Exception e) {
+//                    Toast.makeText(Profile.this, "error", Toast.LENGTH_SHORT).show();
+//                }
+//            });
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
 
         CardView back = findViewById(R.id.materialCardView6);
