@@ -10,10 +10,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +26,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import java.io.ByteArrayOutputStream;
 import java.util.Base64;
 
-
 public class pictureFragment extends BottomSheetDialogFragment {
 
     ImageView galleryIcon, cameraIcon;
@@ -33,9 +34,12 @@ public class pictureFragment extends BottomSheetDialogFragment {
     int CAMERA_REQ_CODE = 100;
 
     byte[] image;
-    String images="";
+    String images = "";
 
-    public pictureFragment() {
+    transferPicture instance;
+
+    public pictureFragment(transferPicture picture) {
+        this.instance=picture;
     }
 
     @Override
@@ -59,7 +63,6 @@ public class pictureFragment extends BottomSheetDialogFragment {
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, CAMERA_REQ_CODE);
-                dismiss();
             }
         });
 
@@ -70,40 +73,59 @@ public class pictureFragment extends BottomSheetDialogFragment {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, SELECT_PICTURE);
-                dismiss();
             }
         });
 
     }
 
+    @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
-            if (requestCode == SELECT_PICTURE) {
+            if (requestCode == CAMERA_REQ_CODE) {
+                Log.d("running", "onActivityResult: camera ran");
+                Bitmap img = (Bitmap) (data.getExtras().get("data"));
+
+
+                image = convertBitmapToByteArray(img);
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userData", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    images = Base64.getEncoder().encodeToString(image);
+                }
+                editor.putString("profilePicture", images);
+                editor.commit();
+                if (instance!=null){
+                    instance.transferImage(images);
+                }
+
+                else{
+                    Toast.makeText(getContext(), "null", Toast.LENGTH_SHORT).show();
+
+                }
+
+                dismiss();
+            }
+
+            else if (requestCode==SELECT_PICTURE){
                 Uri imageUri = data.getData();
-                image =convertImageToByteArray(imageUri);
+                image = convertImageToByteArray(imageUri);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     images = Base64.getEncoder().encodeToString(image);
                     SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userData", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("profilePicture", images);
                     editor.commit();
+                    if (instance!=null){
+                        instance.transferImage(images);
+                    }
+                    else {
+                        Toast.makeText(getContext(), "null", Toast.LENGTH_SHORT).show();
+                    }
+                    dismiss();
                 }
-            }
-
-            else if (requestCode==CAMERA_REQ_CODE){
-                Bitmap img = (Bitmap) (data.getExtras().get("data"));
-                image =convertBitmapToByteArray(img);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    images = Base64.getEncoder().encodeToString(image);
-                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userData", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("profilePicture",images);
-                    editor.commit();
-                }
-
             }
         }
     }
@@ -136,4 +158,10 @@ public class pictureFragment extends BottomSheetDialogFragment {
             return null;
         }
     }
+
+    public interface transferPicture{
+        void transferImage(String image);
+    }
+
+
 }

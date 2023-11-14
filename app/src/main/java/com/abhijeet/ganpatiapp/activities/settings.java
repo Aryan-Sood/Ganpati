@@ -32,7 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Base64;
 
-public class settings extends AppCompatActivity {
+public class settings extends AppCompatActivity implements pictureFragment.transferPicture {
 
     CardView logOutCard;
     MaterialCardView addPictureButton;
@@ -64,7 +64,6 @@ public class settings extends AppCompatActivity {
         CardView back = findViewById(R.id.backButton);
         back.setOnClickListener(view -> back());
 
-
         loadProfileImage();
 
 
@@ -72,7 +71,7 @@ public class settings extends AppCompatActivity {
         addPictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomSheetDialogFragment bottomSheetDialogFragment = new pictureFragment();
+                BottomSheetDialogFragment bottomSheetDialogFragment = new pictureFragment(settings.this::transferImage);
                 bottomSheetDialogFragment.show(getSupportFragmentManager(),bottomSheetDialogFragment.getTag());
             }
         });
@@ -91,10 +90,6 @@ public class settings extends AppCompatActivity {
 
             }
         });
-
-
-
-
 
         logOutCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,4 +149,8 @@ public class settings extends AppCompatActivity {
         return bitmap;
     }
 
+    @Override
+    public void transferImage(String image) {
+        profilePicture.setImageBitmap(stringToBitmap(image));
+    }
 }
