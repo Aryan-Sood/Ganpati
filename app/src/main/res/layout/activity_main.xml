@@ -13,8 +13,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -122,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200sp"
                 android:layout_marginHorizontal="30sp"
-                android:layout_marginTop="40sp"
+                android:layout_marginTop="30dp"
                 app:cardBackgroundColor="#FF9B50"
                 app:cardElevation="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -130,7 +132,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3"
                 app:strokeColor="#FF0000"
-                app:strokeWidth="0.4sp">
+                app:strokeWidth="1sp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -175,11 +177,11 @@
                 android:id="@+id/imageView4"
                 android:layout_width="200sp"
                 android:layout_height="240sp"
-                android:maxHeight="240sp"
-                android:maxWidth="210sp"
                 android:layout_marginEnd="-15dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="100sp"
+                android:maxWidth="210sp"
+                android:maxHeight="240sp"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
                 app:layout_constraintEnd_toEndOf="@+id/materialCardView" />
@@ -276,15 +278,15 @@
                                     android:id="@+id/cardView8"
                                     android:layout_width="match_parent"
                                     android:layout_height="60sp"
-                                    app:cardCornerRadius="8sp"
-                                    app:cardElevation="8sp"
                                     android:layout_marginStart="10dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="10dp"
+                                    app:cardCornerRadius="8sp"
+                                    app:cardElevation="8sp"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent">
-                                    
+
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
@@ -334,20 +336,20 @@
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="parent" />
-                                        
+
                                     </androidx.constraintlayout.widget.ConstraintLayout>
-                                    
+
                                 </androidx.cardview.widget.CardView>
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/cardView10"
                                     android:layout_width="match_parent"
                                     android:layout_height="60sp"
-                                    app:cardCornerRadius="8sp"
-                                    app:cardElevation="8sp"
                                     android:layout_marginStart="10dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="10dp"
+                                    app:cardCornerRadius="8sp"
+                                    app:cardElevation="8sp"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/cardView8">
@@ -362,8 +364,8 @@
                                             android:layout_width="45sp"
                                             android:layout_height="45sp"
                                             android:layout_marginEnd="10dp"
-                                            app:cardElevation="8sp"
                                             app:cardCornerRadius="50sp"
+                                            app:cardElevation="8sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintTop_toTopOf="parent">
@@ -412,11 +414,11 @@
                                     android:id="@+id/cardView11"
                                     android:layout_width="match_parent"
                                     android:layout_height="60sp"
-                                    app:cardCornerRadius="8sp"
-                                    app:cardElevation="8sp"
                                     android:layout_marginStart="10dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="10dp"
+                                    app:cardCornerRadius="8sp"
+                                    app:cardElevation="8sp"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/cardView10">
@@ -431,8 +433,8 @@
                                             android:layout_width="45sp"
                                             android:layout_height="45sp"
                                             android:layout_marginEnd="10dp"
-                                            app:cardElevation="8sp"
                                             app:cardCornerRadius="50sp"
+                                            app:cardElevation="8sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintTop_toTopOf="parent">
@@ -479,11 +481,11 @@
                                     android:id="@+id/cardView12"
                                     android:layout_width="match_parent"
                                     android:layout_height="60sp"
-                                    app:cardCornerRadius="8sp"
-                                    app:cardElevation="8sp"
                                     android:layout_marginStart="10dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="10dp"
+                                    app:cardCornerRadius="8sp"
+                                    app:cardElevation="8sp"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/cardView11">
@@ -497,8 +499,8 @@
                                             android:layout_width="45sp"
                                             android:layout_height="45sp"
                                             android:layout_marginEnd="10dp"
-                                            app:cardElevation="8sp"
                                             app:cardCornerRadius="50sp"
+                                            app:cardElevation="8sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintTop_toTopOf="parent">
@@ -545,11 +547,11 @@
                                     android:id="@+id/cardView13"
                                     android:layout_width="match_parent"
                                     android:layout_height="60sp"
-                                    app:cardCornerRadius="8sp"
-                                    app:cardElevation="8sp"
                                     android:layout_marginStart="10dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginEnd="10dp"
+                                    app:cardCornerRadius="8sp"
+                                    app:cardElevation="8sp"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/cardView12">
@@ -564,8 +566,8 @@
                                             android:layout_width="45sp"
                                             android:layout_height="45sp"
                                             android:layout_marginEnd="10dp"
-                                            app:cardElevation="8sp"
                                             app:cardCornerRadius="50sp"
+                                            app:cardElevation="8sp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintTop_toTopOf="parent">
