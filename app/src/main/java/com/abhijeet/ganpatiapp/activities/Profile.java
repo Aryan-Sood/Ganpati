@@ -3,6 +3,7 @@ package com.abhijeet.ganpatiapp.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +45,13 @@ public class Profile extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
     StorageReference reference;
+    CardView sendbtn;
+    EditText message;
+
+    String messagestr, phonestr = "";
+
+
+
     //TextView nameTextView, emailTextView, phoneTextView, addressTextView;
 
     @Override
@@ -107,7 +116,58 @@ public class Profile extends AppCompatActivity {
             }
         });*/
 
+
+        message = findViewById(R.id.editText);
+        sendbtn = findViewById(R.id.sendbtn);
+
+        sendbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                messagestr = message.getText().toString();
+
+                if(!messagestr.isEmpty()){
+
+                    if(iswhatsappInstalled()){
+
+                        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=+917255017217&text=" + messagestr));
+                        startActivity(i);
+                        message.setText("");
+
+                    }else {
+
+                        Toast.makeText(Profile.this,"Whatshapp is not installed",Toast.LENGTH_SHORT).show();
+
+                    }
+
+                }else {
+
+                    Toast.makeText(Profile.this,"Write your Query in the box and try again.",Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+
+        });
+
     }
+
+    private boolean iswhatsappInstalled() {
+        PackageManager packageManager = getPackageManager();
+        boolean whatsappInstalled;
+
+        try {
+            packageManager.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES);
+            whatsappInstalled = true;
+        } catch (PackageManager.NameNotFoundException e) {
+            whatsappInstalled = false;
+        }
+
+        return whatsappInstalled;
+    }
+
+
+
+
 
     public void back(){
         Intent intent = new Intent(Profile.this, MainActivity.class);
