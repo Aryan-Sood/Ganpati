@@ -67,7 +67,7 @@ public class Profile extends AppCompatActivity {
         //phoneTextView = findViewById(R.id.textView12);
         //addressTextView = findViewById(R.id.textView13);
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        reference = FirebaseStorage.getInstance().getReference("profile/profile.png");
+        reference = FirebaseStorage.getInstance().getReference("Priest_Profile/Profile_Pic.png");
         image = findViewById(R.id.imageView4);
 
 
@@ -127,17 +127,17 @@ public class Profile extends AppCompatActivity {
 
                 if(!messagestr.isEmpty()){
 
-                    if(iswhatsappInstalled()){
+                    // if(iswhatsappInstalled()){
 
                         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=+917255017217&text=" + messagestr));
                         startActivity(i);
                         message.setText("");
 
-                    }else {
+                   // }else {
 
-                        Toast.makeText(Profile.this,"Whatshapp is not installed",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Profile.this,"Whatshapp is not installed",Toast.LENGTH_SHORT).show();
 
-                    }
+                   // }
 
                 }else {
 
