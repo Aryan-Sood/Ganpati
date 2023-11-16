@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -31,6 +32,7 @@ import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.abhijeet.ganpatiapp.adapters.ViewPagerAdapter;
+import com.abhijeet.ganpatiapp.modelclass.PackageChecker;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -129,6 +131,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        isWhatsappInstalled();
 
         shiv_tandav_spotify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -321,7 +325,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ListResult listResult) {
 //                Log.d("TAG", "onSuccess: step");
-                Toast.makeText(MainActivity.this, "size is: " + listResult.getPrefixes().size(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "size is: " + listResult.getPrefixes().size(), Toast.LENGTH_SHORT).show();
                 for (StorageReference item: listResult.getPrefixes()){
                     Log.d("TAG", item.getName());
                     Log.d("TAG", "token is :" + personalUID);
@@ -360,6 +364,20 @@ public class MainActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             Log.e("ImageUtils", "File not found: " + e.getMessage());
             return null;
+        }
+    }
+
+    private boolean isWhatsappInstalled() {
+        PackageManager packageManager = getPackageManager();
+        boolean whatsappInstalled;
+
+        if (PackageChecker.isPackageInstalled(this, "com.whatsapp")){
+            Toast.makeText(this, "yes", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else{
+            Toast.makeText(this, "no", Toast.LENGTH_SHORT).show();
+            return false;
         }
     }
 }

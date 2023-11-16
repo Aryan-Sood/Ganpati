@@ -135,7 +135,7 @@ public class Profile extends AppCompatActivity {
 
                     }else {
 
-                        Toast.makeText(Profile.this,"Whatshapp is not installed",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Profile.this,"Whatsapp is not installed",Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -161,7 +161,7 @@ public class Profile extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException e) {
             whatsappInstalled = false;
         }
-
+        Toast.makeText(this, String.valueOf(whatsappInstalled), Toast.LENGTH_SHORT).show();
         return whatsappInstalled;
     }
 
