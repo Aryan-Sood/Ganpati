@@ -67,35 +67,35 @@ public class Profile extends AppCompatActivity {
         //phoneTextView = findViewById(R.id.textView12);
         //addressTextView = findViewById(R.id.textView13);
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        reference = FirebaseStorage.getInstance().getReference("profile/profile.png");
+        reference = FirebaseStorage.getInstance().getReference("Priest_Profile/Profile_Pic.png");
         image = findViewById(R.id.imageView4);
 
 
         // setting image in image view from firebase.
 
-//        try {
-//            File file = File.createTempFile("tempfile", ".png");
-//            reference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-//                    Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-//                    image.setImageBitmap(bitmap);
-//                }
-//            }).addOnFailureListener(new OnFailureListener() {
-//                @Override
-//                public void onFailure(@NonNull Exception e) {
-//                    Toast.makeText(Profile.this, "error", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            File file = File.createTempFile("tempfile", ".png");
+            reference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                    image.setImageBitmap(bitmap);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(Profile.this, "error", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         CardView back = findViewById(R.id.materialCardView6);
         back.setOnClickListener(view -> back());
 
-//        DatabaseReference ref = database.getReference().child(firebaseAuth.getUid());
+//      DatabaseReference ref = database.getReference().child(firebaseAuth.getUid());
         DatabaseReference ref = database.getReference().child("Users").child(firebaseAuth.getUid());
 
 
@@ -127,17 +127,17 @@ public class Profile extends AppCompatActivity {
 
                 if(!messagestr.isEmpty()){
 
-                    if(iswhatsappInstalled()){
+                    //if(iswhatsappInstalled()){
 
                         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=+917255017217&text=" + messagestr));
                         startActivity(i);
                         message.setText("");
 
-                    }else {
+                    //}else {
 
-                        Toast.makeText(Profile.this,"Whatsapp is not installed",Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(Profile.this,"Whatsapp is not installed",Toast.LENGTH_SHORT).show();
 
-                    }
+                    //}
 
                 }else {
 

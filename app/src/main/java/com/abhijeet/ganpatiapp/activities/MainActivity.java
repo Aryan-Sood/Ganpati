@@ -109,9 +109,9 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     viewPager.setCurrentItem(0);
                 }
-                handler.postDelayed(this::run,7000);
+                handler.postDelayed(this::run,10000);
             }
-        },7000);
+        },10000);
 
 
 
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        isWhatsappInstalled();
+        //isWhatsappInstalled();
 
         shiv_tandav_spotify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -376,7 +376,7 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
-
+/*
     private boolean isWhatsappInstalled() {
         PackageManager packageManager = getPackageManager();
         boolean whatsappInstalled;
@@ -389,5 +389,5 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "no", Toast.LENGTH_SHORT).show();
             return false;
         }
-    }
+    } */
 }
