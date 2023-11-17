@@ -107,6 +107,8 @@ public class Signup extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Signup.this, Login.class);
                 startActivity(intent);
+                // for animation
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                 finish();
 
                 Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -120,4 +122,6 @@ public class Signup extends AppCompatActivity {
             }
         });
     }
+
+
 }

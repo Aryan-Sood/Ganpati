@@ -155,6 +155,9 @@ public class Login extends AppCompatActivity {
                 Intent intent = new Intent(Login.this, Signup.class);
                 startActivity(intent);
                 finish();
+                // for animation
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+
                 Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 if (vibrator != null) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -214,4 +217,12 @@ public class Login extends AppCompatActivity {
             finish();
         }
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+// for animation
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+    }
+
 }
