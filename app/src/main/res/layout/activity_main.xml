@@ -109,12 +109,13 @@
 
 
             <TextView
+                android:id="@+id/textView27"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/imprima"
-                android:text="Trending"
-                android:textColor="@color/black"
+                android:text="जय श्री कृष्णा!"
+                android:textColor="#0E0101"
                 android:textSize="34sp"
                 app:layout_constraintStart_toEndOf="@+id/cardView3"
                 app:layout_constraintTop_toBottomOf="@+id/cardView3" />
@@ -175,16 +176,17 @@
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="200sp"
+                android:layout_width="220sp"
                 android:layout_height="240sp"
-                android:layout_marginEnd="-15dp"
+                android:layout_marginEnd="-20dp"
                 android:layout_marginBottom="20dp"
                 android:elevation="100sp"
                 android:maxWidth="210sp"
                 android:maxHeight="240sp"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
-                app:layout_constraintEnd_toEndOf="@+id/materialCardView" />
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView"
+                app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
 
             <com.google.android.material.card.MaterialCardView

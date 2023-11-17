@@ -41,6 +41,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Login extends AppCompatActivity {
 
     EditText email, password;
+
+    CardView forget;
     CardView loginButton, signUpCard;
    // MaterialCardView googleSignInCard;
 
@@ -55,6 +57,8 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        forget = findViewById(R.id.forgot_password_btn);
 
         email = findViewById(R.id.editText);
         password = findViewById(R.id.editText2);
@@ -71,6 +75,27 @@ public class Login extends AppCompatActivity {
                 .build();
 
      //   client = GoogleSignIn.getClient(this, options);
+
+
+
+        forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login.this, Forgott_Password.class);
+                startActivity(intent);
+                finish();
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(50);
+                    }
+                }
+            }
+        });
+
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
