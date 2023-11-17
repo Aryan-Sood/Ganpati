@@ -129,7 +129,7 @@ public class Profile extends AppCompatActivity {
 
                     if(iswhatsappInstalled()){
 
-                        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=+917255017217&text=" + messagestr));
+                        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=+919155182211&text=" + messagestr));
                         startActivity(i);
                         message.setText("");
 
