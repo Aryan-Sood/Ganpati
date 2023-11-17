@@ -2,6 +2,7 @@ package com.abhijeet.ganpatiapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +14,12 @@ import android.widget.Toast;
 import com.abhijeet.ganpatiapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Forgott_Password extends AppCompatActivity {
 
-    private Button forgetBtn;
+    private CardView forgetBtn;
     private EditText txtEmail;
     private String email;
     private FirebaseAuth auth;
