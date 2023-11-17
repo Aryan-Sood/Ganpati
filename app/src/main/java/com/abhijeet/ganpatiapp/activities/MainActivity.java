@@ -37,8 +37,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.ktx.Firebase;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
@@ -61,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     ScrollView scrollView;
     ViewPager viewPager;
     String personalUID="";
+    String url = "";
 
     CardView aarti_spotify, chalisha_spotify, shiv_tandav_spotify, krishna_leela_spotify, shrimadbhgwat_geeta_spotify;
 
@@ -71,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
 //whatshapp
         chat = findViewById(R.id.whatshapp_icon);
+
+        DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference().child("Spotify");
 
         mainText = findViewById(R.id.mainText);
         database = FirebaseDatabase.getInstance();
@@ -119,7 +126,19 @@ public class MainActivity extends AppCompatActivity {
         aarti_spotify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotourl("https://open.spotify.com/playlist/6NltPE7H3tit05CUloVPmW");
+                firebaseDatabase.child("aarti").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        url = snapshot.getValue(String.class);
+                        Log.d("TAG", "onDataChange: " + url);
+                        gotourl(url);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
                 Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 if (vibrator != null) {
@@ -137,6 +156,21 @@ public class MainActivity extends AppCompatActivity {
         shiv_tandav_spotify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                firebaseDatabase.child("shiv_tandav").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        url = snapshot.getValue(String.class);
+                        Log.d("TAG", "onDataChange: " + url);
+                        gotourl(url);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
                 gotourl("https://open.spotify.com/show/7kXTwW1xCVei6efFjQgINx");
 
                 Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -154,7 +188,20 @@ public class MainActivity extends AppCompatActivity {
         chalisha_spotify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotourl("https://open.spotify.com/track/6H7fLdt0AeWpuxUKXuXWrx");
+
+                firebaseDatabase.child("chalisha").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        url = snapshot.getValue(String.class);
+                        Log.d("TAG", "onDataChange: " + url);
+                        gotourl(url);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
                 Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 if (vibrator != null) {
@@ -170,7 +217,20 @@ public class MainActivity extends AppCompatActivity {
         krishna_leela_spotify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotourl("https://open.spotify.com/show/7kXTwW1xCVei6efFjQgINx");
+
+                firebaseDatabase.child("krishna_leela").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        url = snapshot.getValue(String.class);
+                        Log.d("TAG", "onDataChange: " + url);
+                        gotourl(url);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
                 Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 if (vibrator != null) {
@@ -187,7 +247,20 @@ public class MainActivity extends AppCompatActivity {
         shrimadbhgwat_geeta_spotify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotourl("https://open.spotify.com/episode/7cUOuLoBAEWnUjSuEQT8Zk");
+
+                firebaseDatabase.child("shrimadbhgwat_geeta").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        url = snapshot.getValue(String.class);
+                        Log.d("TAG", "onDataChange: " + url);
+                        gotourl(url);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
                 Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 if (vibrator != null) {
