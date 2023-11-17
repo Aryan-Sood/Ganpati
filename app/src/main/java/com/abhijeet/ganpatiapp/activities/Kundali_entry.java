@@ -79,7 +79,7 @@ public class Kundali_entry extends AppCompatActivity {
                     }
 
                 } else {
-                    Toast.makeText(Kundali_entry.this, "Write your Query in the box and try again.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Kundali_entry.this, "All fields are required", Toast.LENGTH_LONG).show();
                 }
 
                 // Vibration code...
