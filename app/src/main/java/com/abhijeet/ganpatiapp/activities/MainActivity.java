@@ -376,7 +376,7 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
-/*
+
     private boolean isWhatsappInstalled() {
         PackageManager packageManager = getPackageManager();
         boolean whatsappInstalled;
@@ -389,5 +389,5 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "no", Toast.LENGTH_SHORT).show();
             return false;
         }
-    } */
+    }
 }

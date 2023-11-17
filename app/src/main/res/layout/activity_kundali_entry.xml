@@ -131,7 +131,7 @@
                         android:layout_marginEnd="50dp"
                         android:fontFamily="@font/imprima"
                         android:hint="Birth Date"
-                        android:inputType="date"
+                        android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#121212"
                         android:textSize="14sp"
@@ -148,7 +148,7 @@
                         android:layout_marginEnd="50dp"
                         android:fontFamily="@font/imprima"
                         android:hint="Birth Time"
-                        android:inputType="datetime"
+                        android:inputType="numberDecimal"
                         android:textAlignment="center"
                         android:textColor="#121212"
                         android:textSize="14sp"
@@ -256,11 +256,13 @@
                                 app:layout_constraintTop_toBottomOf="@+id/editText9" />
 
                             <EditText
+                                android:id="@+id/editText11"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="40dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginEnd="40dp"
+                                android:inputType="number"
                                 android:fontFamily="@font/imprima"
                                 android:hint="Phone Number"
                                 android:textAlignment="center"
@@ -279,6 +281,7 @@
             </ScrollView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/send_btn"
                 android:layout_width="50sp"
                 android:layout_height="50sp"
                 android:layout_marginEnd="25dp"

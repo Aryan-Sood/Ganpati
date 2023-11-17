@@ -127,17 +127,17 @@ public class Profile extends AppCompatActivity {
 
                 if(!messagestr.isEmpty()){
 
-                    //if(iswhatsappInstalled()){
+                    if(iswhatsappInstalled()){
 
                         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=+917255017217&text=" + messagestr));
                         startActivity(i);
                         message.setText("");
 
-                    //}else {
+                    }else {
 
-                       // Toast.makeText(Profile.this,"Whatsapp is not installed",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Profile.this,"Whatsapp is not installed",Toast.LENGTH_SHORT).show();
 
-                    //}
+                    }
 
                 }else {
 
@@ -170,7 +170,7 @@ public class Profile extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException e) {
             whatsappInstalled = false;
         }
-        Toast.makeText(this, String.valueOf(whatsappInstalled), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, String.valueOf(whatsappInstalled), Toast.LENGTH_SHORT).show();
         return whatsappInstalled;
     }
 
