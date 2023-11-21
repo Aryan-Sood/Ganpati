@@ -120,57 +120,66 @@ public class Profile extends AppCompatActivity {
         message = findViewById(R.id.editText);
         sendbtn = findViewById(R.id.sendbtn);
 
+
         sendbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                messagestr = message.getText().toString();
-
-                if(!messagestr.isEmpty()){
-
-                    if(iswhatsappInstalled()){
-
-                        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=+919155182211&text=" + messagestr));
-                        startActivity(i);
-                        message.setText("");
-
-                    }else {
-
-                        Toast.makeText(Profile.this,"Whatsapp is not installed",Toast.LENGTH_SHORT).show();
-
-                    }
-
-                }else {
-
-                    Toast.makeText(Profile.this,"Write your Query in the box and try again.",Toast.LENGTH_LONG).show();
-
-                }
-
-                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                if (vibrator != null) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        vibrator.vibrate(50);
-                    }
-                }
-
+            public void onClick(View v) {
+                Toast.makeText(Profile.this, String.valueOf(iswhatsappInstalled()), Toast.LENGTH_SHORT).show();
             }
-
         });
+
+//        sendbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                messagestr = message.getText().toString();
+//
+//                if(!messagestr.isEmpty()){
+//
+//                    if(iswhatsappInstalled()){
+//
+//                        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=+919155182211&text=" + messagestr));
+//                        startActivity(i);
+//                        message.setText("");
+//
+//                    }else {
+//
+//                        Toast.makeText(Profile.this,"Whatsapp is not installed",Toast.LENGTH_SHORT).show();
+//
+//                    }
+//
+//                }else {
+//
+//                    Toast.makeText(Profile.this,"Write your Query in the box and try again.",Toast.LENGTH_LONG).show();
+//
+//                }
+//
+//                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+//                if (vibrator != null) {
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+//                    } else {
+//                        vibrator.vibrate(50);
+//                    }
+//                }
+//
+//            }
+//
+//        });
 
     }
 
     private boolean iswhatsappInstalled() {
         PackageManager packageManager = getPackageManager();
-        boolean whatsappInstalled;
-
+        boolean whatsappInstalled=false;
         try {
             packageManager.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES);
             whatsappInstalled = true;
         } catch (PackageManager.NameNotFoundException e) {
             whatsappInstalled = false;
         }
-       // Toast.makeText(this, String.valueOf(whatsappInstalled), Toast.LENGTH_SHORT).show();
+
+//        Toast.makeText(this, String.valueOf(whatsappInstalled), Toast.LENGTH_SHORT).show();
+
         return whatsappInstalled;
     }
 
