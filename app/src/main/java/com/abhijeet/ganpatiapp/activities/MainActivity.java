@@ -171,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                gotourl("https://open.spotify.com/show/7kXTwW1xCVei6efFjQgINx");
 
                 Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 if (vibrator != null) {
