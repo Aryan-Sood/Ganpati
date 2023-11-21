@@ -260,436 +260,46 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="65dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
 
-                        <ScrollView
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:overScrollMode="never"
+                        android:nestedScrollingEnabled="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:nestedScrollingEnabled="true">
+                            android:paddingBottom="90dp">
 
-                            <androidx.constraintlayout.widget.ConstraintLayout
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/aartiRecyclerView"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.5" />
 
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/cardView8"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="60sp"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="10dp"
-                                    app:cardCornerRadius="8sp"
-                                    app:cardElevation="8sp"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent">
 
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="#C3FF5722">
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                                        <androidx.cardview.widget.CardView
-                                            android:id="@+id/aarti_spotify"
-                                            android:layout_width="45sp"
-                                            android:layout_height="45sp"
-                                            android:layout_marginEnd="10dp"
-                                            app:cardCornerRadius="50sp"
-                                            app:cardElevation="8sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent">
 
-                                            <androidx.constraintlayout.widget.ConstraintLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:background="@drawable/background_blue">
+                    </ScrollView>
 
-                                                <ImageView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="match_parent"
-                                                    android:layout_marginStart="10dp"
-                                                    android:layout_marginTop="10dp"
-                                                    android:layout_marginEnd="10dp"
-                                                    android:layout_marginBottom="10dp"
-                                                    android:src="@drawable/play"
-                                                    app:layout_constraintBottom_toBottomOf="parent"
-                                                    app:layout_constraintEnd_toEndOf="parent"
-                                                    app:layout_constraintStart_toStartOf="parent"
-                                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                        </androidx.cardview.widget.CardView>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="20dp"
-                                            android:fontFamily="@font/andika"
-                                            android:text="आरती संग्रह ऑडियो सूची"
-                                            android:textColor="#222222"
-                                            android:textSize="18sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent" />
-
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                </androidx.cardview.widget.CardView>
-
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/cardView10"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="60sp"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="10dp"
-                                    app:cardCornerRadius="8sp"
-                                    app:cardElevation="8sp"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/cardView8">
-
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="#C3FF5722">
-
-                                        <androidx.cardview.widget.CardView
-                                            android:id="@+id/chalisha_spotify"
-                                            android:layout_width="45sp"
-                                            android:layout_height="45sp"
-                                            android:layout_marginEnd="10dp"
-                                            app:cardCornerRadius="50sp"
-                                            app:cardElevation="8sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent">
-
-                                            <androidx.constraintlayout.widget.ConstraintLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:background="@drawable/background_blue">
-
-                                                <ImageView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="match_parent"
-                                                    android:layout_marginStart="10dp"
-                                                    android:layout_marginTop="10dp"
-                                                    android:layout_marginEnd="10dp"
-                                                    android:layout_marginBottom="10dp"
-                                                    android:src="@drawable/play"
-                                                    app:layout_constraintBottom_toBottomOf="parent"
-                                                    app:layout_constraintEnd_toEndOf="parent"
-                                                    app:layout_constraintHorizontal_bias="0.0"
-                                                    app:layout_constraintStart_toStartOf="parent"
-                                                    app:layout_constraintTop_toTopOf="parent"
-                                                    app:layout_constraintVertical_bias="1.0" />
-
-                                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                        </androidx.cardview.widget.CardView>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="20dp"
-                                            android:fontFamily="@font/andika"
-                                            android:text="चालीसा ऑडियो सूची"
-                                            android:textColor="#222222"
-                                            android:textSize="18sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent" />
-
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                </androidx.cardview.widget.CardView>
-
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/cardView11"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="60sp"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="10dp"
-                                    app:cardCornerRadius="8sp"
-                                    app:cardElevation="8sp"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/cardView10">
-
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="#C3FF5722">
-
-                                        <androidx.cardview.widget.CardView
-                                            android:id="@+id/shiv_tandav_spotify"
-                                            android:layout_width="45sp"
-                                            android:layout_height="45sp"
-                                            android:layout_marginEnd="10dp"
-                                            app:cardCornerRadius="50sp"
-                                            app:cardElevation="8sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent">
-
-                                            <androidx.constraintlayout.widget.ConstraintLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:background="@drawable/background_blue">
-
-                                                <ImageView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="match_parent"
-                                                    android:layout_marginStart="10dp"
-                                                    android:layout_marginTop="10dp"
-                                                    android:layout_marginEnd="10dp"
-                                                    android:layout_marginBottom="10dp"
-                                                    android:src="@drawable/play"
-                                                    app:layout_constraintBottom_toBottomOf="parent"
-                                                    app:layout_constraintEnd_toEndOf="parent"
-                                                    app:layout_constraintStart_toStartOf="parent"
-                                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                        </androidx.cardview.widget.CardView>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="20dp"
-                                            android:fontFamily="@font/andika"
-                                            android:text="शिव तांडव ऑडियो"
-                                            android:textColor="#222222"
-                                            android:textSize="18sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent" />
-
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                </androidx.cardview.widget.CardView>
-
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/cardView12"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="60sp"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="10dp"
-                                    app:cardCornerRadius="8sp"
-                                    app:cardElevation="8sp"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/cardView11">
-
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="#C3FF5722">
-
-                                        <androidx.cardview.widget.CardView
-                                            android:layout_width="45sp"
-                                            android:layout_height="45sp"
-                                            android:layout_marginEnd="10dp"
-                                            app:cardCornerRadius="50sp"
-                                            app:cardElevation="8sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent">
-
-                                            <androidx.constraintlayout.widget.ConstraintLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:background="@drawable/background_blue">
-
-                                                <ImageView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="match_parent"
-                                                    android:layout_marginStart="10dp"
-                                                    android:layout_marginTop="10dp"
-                                                    android:layout_marginEnd="10dp"
-                                                    android:layout_marginBottom="10dp"
-                                                    android:src="@drawable/play"
-                                                    app:layout_constraintBottom_toBottomOf="parent"
-                                                    app:layout_constraintEnd_toEndOf="parent"
-                                                    app:layout_constraintStart_toStartOf="parent"
-                                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                        </androidx.cardview.widget.CardView>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="20dp"
-                                            android:fontFamily="@font/andika"
-                                            android:text="Aarti Sangrah"
-                                            android:textColor="#222222"
-                                            android:textSize="18sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent" />
-
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                </androidx.cardview.widget.CardView>
-
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/cardView13"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="60sp"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="10dp"
-                                    app:cardCornerRadius="8sp"
-                                    app:cardElevation="8sp"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/cardView12">
-
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="#C3FF5722">
-
-                                        <androidx.cardview.widget.CardView
-                                            android:id="@+id/shrimadbhgwat_geeta_spotify"
-                                            android:layout_width="45sp"
-                                            android:layout_height="45sp"
-                                            android:layout_marginEnd="10dp"
-                                            app:cardCornerRadius="50sp"
-                                            app:cardElevation="8sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent">
-
-                                            <androidx.constraintlayout.widget.ConstraintLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:background="@drawable/background_blue">
-
-                                                <ImageView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="match_parent"
-                                                    android:layout_marginStart="10dp"
-                                                    android:layout_marginTop="10dp"
-                                                    android:layout_marginEnd="10dp"
-                                                    android:layout_marginBottom="10dp"
-                                                    android:src="@drawable/play"
-                                                    app:layout_constraintBottom_toBottomOf="parent"
-                                                    app:layout_constraintEnd_toEndOf="parent"
-                                                    app:layout_constraintStart_toStartOf="parent"
-                                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                        </androidx.cardview.widget.CardView>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="20dp"
-                                            android:fontFamily="@font/andika"
-                                            android:text="श्रीमद्भगवद्गीता"
-                                            android:textColor="#222222"
-                                            android:textSize="18sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent" />
-
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                </androidx.cardview.widget.CardView>
-
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/cardView14"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="60sp"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="10dp"
-                                    android:layout_marginBottom="15dp"
-                                    app:cardCornerRadius="8sp"
-                                    app:cardElevation="8sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/cardView13">
-
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="#C3FF5722">
-
-                                        <androidx.cardview.widget.CardView
-                                            android:id="@+id/krishna_leela_spotify"
-                                            android:layout_width="45sp"
-                                            android:layout_height="45sp"
-                                            android:layout_marginEnd="10dp"
-                                            app:cardCornerRadius="50sp"
-                                            app:cardElevation="8sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent">
-
-                                            <androidx.constraintlayout.widget.ConstraintLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:background="@drawable/background_blue">
-
-                                                <ImageView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="match_parent"
-                                                    android:layout_marginStart="10dp"
-                                                    android:layout_marginTop="10dp"
-                                                    android:layout_marginEnd="10dp"
-                                                    android:layout_marginBottom="10dp"
-                                                    android:src="@drawable/play"
-                                                    app:layout_constraintBottom_toBottomOf="parent"
-                                                    app:layout_constraintEnd_toEndOf="parent"
-                                                    app:layout_constraintStart_toStartOf="parent"
-                                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                        </androidx.cardview.widget.CardView>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="20dp"
-                                            android:fontFamily="@font/andika"
-                                            android:text="श्री कृष्ण लीला"
-                                            android:textColor="#222222"
-                                            android:textSize="18sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent" />
-
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                </androidx.cardview.widget.CardView>
-
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        </ScrollView>
-
-                    </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
             </com.google.android.material.card.MaterialCardView>
 

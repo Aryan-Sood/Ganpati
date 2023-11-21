@@ -29,10 +29,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.abhijeet.ganpatiapp.adapters.SpotifyLinkAdapter;
 import com.abhijeet.ganpatiapp.adapters.ViewPagerAdapter;
 import com.abhijeet.ganpatiapp.modelclass.PackageChecker;
+import com.abhijeet.ganpatiapp.modelclass.SpotifyLinkModelClass;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,6 +58,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
     ScrollView scrollView;
     ViewPager viewPager;
     String personalUID="";
-    String url = "";
+    RecyclerView aartiRecyclerView;
+    SpotifyLinkAdapter spotifyAdapter;
+    LinearLayoutManager layoutManager;
+    List<SpotifyLinkModelClass> dataList;
 
     CardView aarti_spotify, chalisha_spotify, shiv_tandav_spotify, krishna_leela_spotify, shrimadbhgwat_geeta_spotify;
 
@@ -93,12 +103,15 @@ public class MainActivity extends AppCompatActivity {
 
         checkAndSetProfileImage();
 
+        initSpotifyData();
+        spotifyLinksInitRecyclerView();
+
         //Spotify
-        aarti_spotify = findViewById(R.id.aarti_spotify);
-        shiv_tandav_spotify = findViewById(R.id.shiv_tandav_spotify);
-        chalisha_spotify = findViewById(R.id.chalisha_spotify);
-        krishna_leela_spotify = findViewById(R.id.krishna_leela_spotify);
-        shrimadbhgwat_geeta_spotify = findViewById(R.id.shrimadbhgwat_geeta_spotify);
+//        aarti_spotify = findViewById(R.id.aarti_spotify);
+//        shiv_tandav_spotify = findViewById(R.id.shiv_tandav_spotify);
+//        chalisha_spotify = findViewById(R.id.chalisha_spotify);
+//        krishna_leela_spotify = findViewById(R.id.krishna_leela_spotify);
+//        shrimadbhgwat_geeta_spotify = findViewById(R.id.shrimadbhgwat_geeta_spotify);
 
 
         DatabaseReference ref = database.getReference().child("Aarti");
@@ -123,154 +136,154 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Spotify Song Link
-        aarti_spotify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firebaseDatabase.child("aarti").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        url = snapshot.getValue(String.class);
-                        Log.d("TAG", "onDataChange: " + url);
-                        gotourl(url);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                if (vibrator != null) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        vibrator.vibrate(50);
-                    }
-                }
-            }
-        });
-
-        //isWhatsappInstalled();
-
-        shiv_tandav_spotify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                firebaseDatabase.child("shiv_tandav").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        url = snapshot.getValue(String.class);
-                        Log.d("TAG", "onDataChange: " + url);
-                        gotourl(url);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-
-                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                if (vibrator != null) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        vibrator.vibrate(50);
-                    }
-                }
-            }
-        });
-
-
-        chalisha_spotify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                firebaseDatabase.child("chalisha").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        url = snapshot.getValue(String.class);
-                        Log.d("TAG", "onDataChange: " + url);
-                        gotourl(url);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                if (vibrator != null) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        vibrator.vibrate(50);
-                    }
-                }
-            }
-        });
-
-        krishna_leela_spotify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                firebaseDatabase.child("krishna_leela").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        url = snapshot.getValue(String.class);
-                        Log.d("TAG", "onDataChange: " + url);
-                        gotourl(url);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                if (vibrator != null) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        vibrator.vibrate(50);
-                    }
-                }
-            }
-        });
-
-
-        shrimadbhgwat_geeta_spotify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                firebaseDatabase.child("shrimadbhgwat_geeta").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        url = snapshot.getValue(String.class);
-                        Log.d("TAG", "onDataChange: " + url);
-                        gotourl(url);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                if (vibrator != null) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        vibrator.vibrate(50);
-                    }
-                }
-            }
-        });
+//        aarti_spotify.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                firebaseDatabase.child("aarti").addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        url = snapshot.getValue(String.class);
+//                        Log.d("TAG", "onDataChange: " + url);
+//                        gotourl(url);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//
+//                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+//                if (vibrator != null) {
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+//                    } else {
+//                        vibrator.vibrate(50);
+//                    }
+//                }
+//            }
+//        });
+//
+//        //isWhatsappInstalled();
+//
+//        shiv_tandav_spotify.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                firebaseDatabase.child("shiv_tandav").addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        url = snapshot.getValue(String.class);
+//                        Log.d("TAG", "onDataChange: " + url);
+//                        gotourl(url);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//
+//
+//                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+//                if (vibrator != null) {
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+//                    } else {
+//                        vibrator.vibrate(50);
+//                    }
+//                }
+//            }
+//        });
+//
+//
+//        chalisha_spotify.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                firebaseDatabase.child("chalisha").addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        url = snapshot.getValue(String.class);
+//                        Log.d("TAG", "onDataChange: " + url);
+//                        gotourl(url);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//
+//                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+//                if (vibrator != null) {
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+//                    } else {
+//                        vibrator.vibrate(50);
+//                    }
+//                }
+//            }
+//        });
+//
+//        krishna_leela_spotify.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                firebaseDatabase.child("krishna_leela").addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        url = snapshot.getValue(String.class);
+//                        Log.d("TAG", "onDataChange: " + url);
+//                        gotourl(url);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//
+//                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+//                if (vibrator != null) {
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+//                    } else {
+//                        vibrator.vibrate(50);
+//                    }
+//                }
+//            }
+//        });
+//
+//
+//        shrimadbhgwat_geeta_spotify.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                firebaseDatabase.child("shrimadbhgwat_geeta").addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        url = snapshot.getValue(String.class);
+//                        Log.d("TAG", "onDataChange: " + url);
+//                        gotourl(url);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//
+//                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+//                if (vibrator != null) {
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+//                    } else {
+//                        vibrator.vibrate(50);
+//                    }
+//                }
+//            }
+//        });
 
 
 
@@ -428,7 +441,6 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("TAG", "onSuccess: user not found");
                     }
                 }
-//                Log.d("TAG", "final");
             }
         });
 
@@ -461,5 +473,36 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "no", Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+
+    public void spotifyLinksInitRecyclerView(){
+        aartiRecyclerView = findViewById(R.id.aartiRecyclerView);
+        layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        aartiRecyclerView.setLayoutManager(layoutManager);
+        spotifyAdapter = new SpotifyLinkAdapter(dataList);
+        aartiRecyclerView.setAdapter(spotifyAdapter);
+        spotifyAdapter.notifyDataSetChanged();
+    }
+
+    public void initSpotifyData(){
+        dataList = new ArrayList<>();
+
+        DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference().child("Spotify");
+
+        firebaseDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot ds: snapshot.getChildren()){
+                    dataList.add(new SpotifyLinkModelClass(ds.getKey(),ds.getValue().toString()));
+                    spotifyAdapter.notifyDataSetChanged();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

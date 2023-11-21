@@ -37,7 +37,8 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="45sp"
                 android:layout_height="45sp"
-                app:cardCornerRadius="50sp">
+                app:cardCornerRadius="50sp"
+                android:id="@+id/playButton">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -45,7 +46,6 @@
                     android:background="@drawable/background_blue">
 
                     <ImageView
-                        android:id="@+id/playButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="10dp"
