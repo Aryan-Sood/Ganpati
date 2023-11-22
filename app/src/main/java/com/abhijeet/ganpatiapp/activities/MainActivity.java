@@ -58,6 +58,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
         setCurrentUID();
 
-        checkAndSetProfileImage();
+//        checkAndSetProfileImage();
 
         initSpotifyData();
         spotifyLinksInitRecyclerView();
@@ -132,160 +133,6 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(this::run,10000);
             }
         },10000);
-
-
-
-        //Spotify Song Link
-//        aarti_spotify.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                firebaseDatabase.child("aarti").addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        url = snapshot.getValue(String.class);
-//                        Log.d("TAG", "onDataChange: " + url);
-//                        gotourl(url);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//
-//                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-//                if (vibrator != null) {
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
-//                    } else {
-//                        vibrator.vibrate(50);
-//                    }
-//                }
-//            }
-//        });
-//
-//        //isWhatsappInstalled();
-//
-//        shiv_tandav_spotify.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                firebaseDatabase.child("shiv_tandav").addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        url = snapshot.getValue(String.class);
-//                        Log.d("TAG", "onDataChange: " + url);
-//                        gotourl(url);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//
-//
-//                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-//                if (vibrator != null) {
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
-//                    } else {
-//                        vibrator.vibrate(50);
-//                    }
-//                }
-//            }
-//        });
-//
-//
-//        chalisha_spotify.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                firebaseDatabase.child("chalisha").addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        url = snapshot.getValue(String.class);
-//                        Log.d("TAG", "onDataChange: " + url);
-//                        gotourl(url);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//
-//                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-//                if (vibrator != null) {
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
-//                    } else {
-//                        vibrator.vibrate(50);
-//                    }
-//                }
-//            }
-//        });
-//
-//        krishna_leela_spotify.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                firebaseDatabase.child("krishna_leela").addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        url = snapshot.getValue(String.class);
-//                        Log.d("TAG", "onDataChange: " + url);
-//                        gotourl(url);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//
-//                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-//                if (vibrator != null) {
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
-//                    } else {
-//                        vibrator.vibrate(50);
-//                    }
-//                }
-//            }
-//        });
-//
-//
-//        shrimadbhgwat_geeta_spotify.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                firebaseDatabase.child("shrimadbhgwat_geeta").addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        url = snapshot.getValue(String.class);
-//                        Log.d("TAG", "onDataChange: " + url);
-//                        gotourl(url);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//
-//                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-//                if (vibrator != null) {
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
-//                    } else {
-//                        vibrator.vibrate(50);
-//                    }
-//                }
-//            }
-//        });
-
-
 
         //checkOffset();
 
@@ -410,41 +257,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void checkAndSetProfileImage(){
-        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
-        StorageReference storageReference = firebaseStorage.getReference().child("profileData");
 
-//        Log.d("TAG", "checkAndSetProfileImage: yayyy");
-
-        storageReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
-            @Override
-            public void onSuccess(ListResult listResult) {
-//                Log.d("TAG", "onSuccess: step");
-//                Toast.makeText(MainActivity.this, "size is: " + listResult.getPrefixes().size(), Toast.LENGTH_SHORT).show();
-                for (StorageReference item: listResult.getPrefixes()){
-                    Log.d("TAG", item.getName());
-                    Log.d("TAG", "token is :" + personalUID);
-                    if (item.getName().equals(personalUID)){
-                        Log.d("TAG", "onSuccess: user  found");
-                        item.child("profileimage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                SharedPreferences sharedPreferences = getSharedPreferences("userData",MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString("profilePicture",UriToString(uri));
-                                editor.commit();
-                            }
-                        });
-                    }
-
-                    else{
-                        Log.d("TAG", "onSuccess: user not found");
-                    }
-                }
-            }
-        });
-
-    }
 
 
     public String UriToString(Uri uri){
@@ -504,5 +317,52 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void checkAndSetProfileImage(){
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+        StorageReference storageReference = firebaseStorage.getReference().child("profileData").child(personalUID).child("profileimage.jpg");
+
+//        Log.d("TAG", "checkAndSetProfileImage: yayyy");
+
+        storageReference.getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                String x = new String(bytes, StandardCharsets.UTF_8);
+                SharedPreferences sharedPreferences = getSharedPreferences("userData",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("profilePicture",x);
+                editor.commit();
+            }
+        });
+
+//        storageReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+//            @Override
+//            public void onSuccess(ListResult listResult) {
+////                Log.d("TAG", "onSuccess: step");
+////                Toast.makeText(MainActivity.this, "size is: " + listResult.getPrefixes().size(), Toast.LENGTH_SHORT).show();
+//                for (StorageReference item: listResult.getPrefixes()){
+//                    Log.d("TAG", item.getName());
+//                    Log.d("TAG", "token is :" + personalUID);
+//                    if (item.getName().equals(personalUID)){
+//                        Log.d("TAG", "onSuccess: user  found");
+//                        item.child("profileimage.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                            @Override
+//                            public void onSuccess(Uri uri) {
+//                                SharedPreferences sharedPreferences = getSharedPreferences("userData",MODE_PRIVATE);
+//                                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                                editor.putString("profilePicture",UriToString(uri));
+//                                editor.commit();
+//                            }
+//                        });
+//                    }
+//
+//                    else{
+//                        Log.d("TAG", "onSuccess: user not found");
+//                    }
+//                }
+//            }
+//        });
+
     }
 }
