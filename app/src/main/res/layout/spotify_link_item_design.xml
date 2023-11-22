@@ -7,7 +7,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="62sp"
         android:layout_marginHorizontal="10dp"
         app:cardBackgroundColor="#C3FF5722"
         android:layout_marginTop="10dp"
@@ -22,9 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="30dp"
-            android:paddingVertical="15dp"
-            app:justifyContent="space_between"
-            app:alignItems="center">
+            android:paddingVertical="8dp"
+            app:alignItems="center"
+            app:justifyContent="space_between">
 
             <TextView
                 android:id="@+id/aartiName"
@@ -35,10 +35,10 @@
                 android:textSize="20sp" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/playButton"
                 android:layout_width="45sp"
                 android:layout_height="45sp"
-                app:cardCornerRadius="50sp"
-                android:id="@+id/playButton">
+                app:cardCornerRadius="50sp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
