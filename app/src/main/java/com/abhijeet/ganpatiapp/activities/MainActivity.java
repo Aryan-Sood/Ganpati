@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
         setCurrentUID();
 
-//        checkAndSetProfileImage();
+        checkAndSetProfileImage();
 
         initSpotifyData();
         spotifyLinksInitRecyclerView();
@@ -328,7 +328,10 @@ public class MainActivity extends AppCompatActivity {
         storageReference.getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
-                String x = new String(bytes, StandardCharsets.UTF_8);
+
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+
+                String x = bitmapToString(bitmap);
                 SharedPreferences sharedPreferences = getSharedPreferences("userData",MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("profilePicture",x);
@@ -364,5 +367,13 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+    }
+
+
+    public String bitmapToString(Bitmap bitmap){
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(byteArray, Base64.DEFAULT);
     }
 }

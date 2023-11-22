@@ -17,7 +17,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.abhijeet.ganpatiapp.R;
 import com.abhijeet.ganpatiapp.bottomsheets.pictureFragment;
@@ -29,8 +28,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.Base64;
 
 public class settings extends AppCompatActivity implements pictureFragment.transferPicture {
 
@@ -139,14 +136,9 @@ public class settings extends AppCompatActivity implements pictureFragment.trans
         }
     }
 
-    public Bitmap stringToBitmap(String s) {
-        byte image[] = new byte[0];
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            image = Base64.getDecoder().decode(s);
-        }
-        Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-        return bitmap;
+    public Bitmap stringToBitmap(String s){
+        byte[] byteArray = android.util.Base64.decode(s, android.util.Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
     }
 
     @Override

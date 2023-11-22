@@ -265,8 +265,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:overScrollMode="never"
                         android:nestedScrollingEnabled="true"
+                        android:overScrollMode="never"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
@@ -297,8 +297,6 @@
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
             </com.google.android.material.card.MaterialCardView>
