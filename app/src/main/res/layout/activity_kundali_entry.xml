@@ -56,11 +56,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/imprima"
-        android:text="Kundali"
+        android:text="कुंडली"
         android:textAlignment="center"
         android:textColor="#121212"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -281,13 +280,13 @@
 
             </ScrollView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/send_btn"
                 android:layout_width="50sp"
                 android:layout_height="50sp"
+                app:strokeColor="@color/black"
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="25dp"
-                app:cardBackgroundColor="#F86337"
                 app:cardCornerRadius="50sp"
                 app:cardElevation="25sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -295,7 +294,8 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_kundalii">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -312,7 +312,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
