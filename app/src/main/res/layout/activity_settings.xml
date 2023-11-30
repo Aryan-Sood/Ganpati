@@ -85,10 +85,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardView7"
             android:layout_width="150sp"
             android:layout_height="150sp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2sp"
             app:cardCornerRadius="500sp"
             app:cardElevation="8sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -101,13 +103,13 @@
                 android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/addPictureButton"
-            android:layout_width="40sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="-35dp"
+            android:layout_width="35sp"
+            android:layout_height="35sp"
+            android:layout_marginStart="-30dp"
             android:layout_marginBottom="20dp"
             app:cardCornerRadius="50sp"
             app:cardElevation="12sp"
