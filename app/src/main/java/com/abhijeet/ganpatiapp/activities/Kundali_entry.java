@@ -13,15 +13,21 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.abhijeet.ganpatiapp.R;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.timepicker.MaterialTimePicker;
+import com.google.android.material.timepicker.TimeFormat;
+
+import java.util.Calendar;
 
 public class Kundali_entry extends AppCompatActivity {
 
     CardView backButton, Send_Btn;
     EditText Child_Name, Birth_Date, Birth_Time, Birth_Location, Father_Name, Mother_Name, Current_Location, Phone_Number;
+    MaterialDatePicker datePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,21 @@ public class Kundali_entry extends AppCompatActivity {
         Current_Location = findViewById(R.id.editText10);
         Phone_Number = findViewById(R.id.editText11);
         Send_Btn = findViewById(R.id.send_btn);
+
+
+        Birth_Date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePicker();
+            }
+        });
+
+        Birth_Time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimePicker();
+            }
+        });
 
 
 
@@ -133,5 +154,27 @@ public class Kundali_entry extends AppCompatActivity {
         }
     }
 
+    public void showDatePicker(){
+        CalendarConstraints.Builder constraintBuilder = new CalendarConstraints.Builder();
+        constraintBuilder.setEnd(Calendar.getInstance().getTimeInMillis());
+
+        Calendar today = Calendar.getInstance();
+        datePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Select Date")
+                .setSelection(today.getTimeInMillis())
+                .setCalendarConstraints(constraintBuilder.build())
+                .build();
+        datePicker.show(getSupportFragmentManager(),"tag");
+    }
+
+    public void showTimePicker(){
+        MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
+                .setTimeFormat(TimeFormat.CLOCK_12H)
+                .setHour(12)
+                .setMinute(0)
+                .setTitleText("Select Time")
+                .build();
+        timePicker.show(getSupportFragmentManager(),"tag");
+    }
 
 }
