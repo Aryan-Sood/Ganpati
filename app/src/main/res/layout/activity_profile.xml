@@ -112,7 +112,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="100dp"
                             android:fontFamily="@font/imprima"
-                            android:text="Hareram Sastri"
+                            android:text="Hareram Shastri"
                             android:textColor="#000000"
                             android:textSize="18sp"
                             app:layout_constraintEnd_toEndOf="parent"
