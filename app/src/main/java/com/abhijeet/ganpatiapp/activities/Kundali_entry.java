@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,10 +19,14 @@ import android.widget.Toast;
 import com.abhijeet.ganpatiapp.R;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Kundali_entry extends AppCompatActivity {
 
@@ -165,6 +170,14 @@ public class Kundali_entry extends AppCompatActivity {
                 .setCalendarConstraints(constraintBuilder.build())
                 .build();
         datePicker.show(getSupportFragmentManager(),"tag");
+
+        datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+            @Override
+            public void onPositiveButtonClick(Object selection) {
+                String first = selection.toString();
+                Log.d("TAG", "onPositiveButtonClick: " + convertDate(first));
+            }
+        });
     }
 
     public void showTimePicker(){
@@ -175,6 +188,13 @@ public class Kundali_entry extends AppCompatActivity {
                 .setTitleText("Select Time")
                 .build();
         timePicker.show(getSupportFragmentManager(),"tag");
+    }
+
+
+    public String convertDate(String milliseconds){
+        DateFormat simple = new SimpleDateFormat("dd MM yyyy");
+        Date result = new Date(milliseconds);
+        return simple.format(result);
     }
 
 }
