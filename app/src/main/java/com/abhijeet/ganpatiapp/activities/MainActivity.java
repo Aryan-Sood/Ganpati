@@ -2,6 +2,8 @@ package com.abhijeet.ganpatiapp.activities;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.IntentSenderRequest;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,6 +42,12 @@ import com.abhijeet.ganpatiapp.modelclass.PackageChecker;
 import com.abhijeet.ganpatiapp.modelclass.SpotifyLinkModelClass;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -180,6 +188,10 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+
+
+
+
     }
 
 
@@ -220,7 +232,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void onBackPressed(){
+    public void onBackPressed() {
+        super.onBackPressed();
         Intent a = new Intent(Intent.ACTION_MAIN);
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -14,6 +14,7 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.abhijeet.ganpatiapp.R;
@@ -31,7 +32,8 @@ import java.util.Date;
 public class Kundali_entry extends AppCompatActivity {
 
     CardView backButton, Send_Btn;
-    EditText Child_Name, Birth_Date, Birth_Time, Birth_Location, Father_Name, Mother_Name, Current_Location, Phone_Number;
+    EditText Child_Name, Birth_Location, Father_Name, Mother_Name, Current_Location, Phone_Number;
+    TextView Birth_Date, Birth_Time;
     MaterialDatePicker datePicker;
 
     @Override
@@ -41,8 +43,8 @@ public class Kundali_entry extends AppCompatActivity {
 
         backButton = findViewById(R.id.backButton);
         Child_Name = findViewById(R.id.editText3);
-        Birth_Date = findViewById(R.id.editText4);
-        Birth_Time = findViewById(R.id.editText5);
+        Birth_Date = findViewById(R.id.dateText4);
+        Birth_Time = findViewById(R.id.timeText5);
         Birth_Location = findViewById(R.id.editText6);
         Father_Name = findViewById(R.id.editText8);
         Mother_Name = findViewById(R.id.editText9);
