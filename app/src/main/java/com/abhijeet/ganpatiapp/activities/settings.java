@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
@@ -31,7 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class settings extends AppCompatActivity implements pictureFragment.transferPicture {
 
-    CardView logOutCard;
+    CardView logOutCard, cardView;
     MaterialCardView addPictureButton;
 
     FirebaseAuth firebaseAuth;
@@ -45,6 +46,8 @@ public class settings extends AppCompatActivity implements pictureFragment.trans
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        CardView  cardView = findViewById(R.id.checkForUpdate);
 
         logOutCard = findViewById(R.id.logoutCard);
         name = findViewById(R.id.textView22);
@@ -98,7 +101,21 @@ public class settings extends AppCompatActivity implements pictureFragment.trans
                 finish();
             }
         });
+
+        cardView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                String url = "https://play.google.com/store/apps/details?id=com.abhijeet.ganpatiapp"; // Replace with your desired URL
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+
+
     }
+
+
 
 
     public void back(){
