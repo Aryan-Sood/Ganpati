@@ -42,12 +42,6 @@ import com.abhijeet.ganpatiapp.modelclass.PackageChecker;
 import com.abhijeet.ganpatiapp.modelclass.SpotifyLinkModelClass;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.play.core.appupdate.AppUpdateInfo;
-import com.google.android.play.core.appupdate.AppUpdateManager;
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
-import com.google.android.play.core.install.model.AppUpdateType;
-import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -86,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
     LinearLayoutManager layoutManager;
     List<SpotifyLinkModelClass> dataList;
 
-    CardView aarti_spotify, chalisha_spotify, shiv_tandav_spotify, krishna_leela_spotify, shrimadbhgwat_geeta_spotify;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,14 +107,6 @@ public class MainActivity extends AppCompatActivity {
 
         initSpotifyData();
         spotifyLinksInitRecyclerView();
-
-        //Spotify
-//        aarti_spotify = findViewById(R.id.aarti_spotify);
-//        shiv_tandav_spotify = findViewById(R.id.shiv_tandav_spotify);
-//        chalisha_spotify = findViewById(R.id.chalisha_spotify);
-//        krishna_leela_spotify = findViewById(R.id.krishna_leela_spotify);
-//        shrimadbhgwat_geeta_spotify = findViewById(R.id.shrimadbhgwat_geeta_spotify);
-
 
         DatabaseReference ref = database.getReference().child("Aarti");
 

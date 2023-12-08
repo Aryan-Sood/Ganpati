@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FF0000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:text="वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ। \n निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
