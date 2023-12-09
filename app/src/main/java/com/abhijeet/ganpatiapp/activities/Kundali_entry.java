@@ -177,9 +177,14 @@ public class Kundali_entry extends AppCompatActivity {
             @Override
             public void onPositiveButtonClick(Object selection) {
                 String first = selection.toString();
-                Log.d("TAG", "onPositiveButtonClick: " + convertDate(first));
+                Long second = Long.valueOf(first);
+                Birth_Date.setText(convertDate(second));
             }
         });
+
+
+
+
     }
 
     public void showTimePicker(){
@@ -190,13 +195,32 @@ public class Kundali_entry extends AppCompatActivity {
                 .setTitleText("Select Time")
                 .build();
         timePicker.show(getSupportFragmentManager(),"tag");
+
+
+        timePicker.addOnPositiveButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int selectedMinute = timePicker.getMinute();
+                int selectedHour = timePicker.getHour();
+                Log.d("TAG", "onClick: " + String.valueOf(selectedMinute).length());
+                if ((String.valueOf(selectedMinute)).length()==1){
+                    selectedMinute = Integer.valueOf(selectedMinute + "0");
+                    Log.d("TAG", "onClick:new one is  " + selectedMinute);
+                }
+
+                Birth_Time.setText(selectedHour + ":" + selectedMinute);
+
+            }
+        });
     }
 
 
-    public String convertDate(String milliseconds){
-        DateFormat simple = new SimpleDateFormat("dd MM yyyy");
-        Date result = new Date(milliseconds);
-        return simple.format(result);
+    public String convertDate(long milliseconds){
+        Date date = new Date(milliseconds);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDate = dateFormat.format(date);
+
+        return formattedDate;
     }
 
 }
