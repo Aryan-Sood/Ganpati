@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.abhijeet.ganpatiapp.R;
 import com.abhijeet.ganpatiapp.adapters.Aarti_List_Adapter;
@@ -28,6 +29,7 @@ public class puja_list_view extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference reference;
+    TextView title;
     List<Puja_List_View_model_Class> list;
 
     RecyclerView puja_list_recycler_view;
@@ -42,9 +44,11 @@ public class puja_list_view extends AppCompatActivity {
 
         list = new ArrayList<>();
         backButton = findViewById(R.id.backButton);
+        title = findViewById(R.id.textView29);
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
+        title.setText(name);
 
         database = FirebaseDatabase.getInstance();
         reference = FirebaseDatabase.getInstance().getReference().child("Puja").child(name);

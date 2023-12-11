@@ -189,7 +189,7 @@ public class Kundali_entry extends AppCompatActivity {
 
     public void showTimePicker(){
         MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
-                .setTimeFormat(TimeFormat.CLOCK_12H)
+                .setTimeFormat(TimeFormat.CLOCK_24H)
                 .setHour(12)
                 .setMinute(0)
                 .setTitleText("Select Time")
@@ -202,10 +202,8 @@ public class Kundali_entry extends AppCompatActivity {
             public void onClick(View view) {
                 int selectedMinute = timePicker.getMinute();
                 int selectedHour = timePicker.getHour();
-                Log.d("TAG", "onClick: " + String.valueOf(selectedMinute).length());
                 if ((String.valueOf(selectedMinute)).length()==1){
                     selectedMinute = Integer.valueOf(selectedMinute + "0");
-                    Log.d("TAG", "onClick:new one is  " + selectedMinute);
                 }
 
                 Birth_Time.setText(selectedHour + ":" + selectedMinute);
