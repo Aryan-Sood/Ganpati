@@ -4,8 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Forgott_Password extends AppCompatActivity {
 
-    private CardView forgetBtn;
+    private CardView forgetBtn, loginBtn;
     private EditText txtEmail;
     private String email;
     private FirebaseAuth auth;
@@ -35,6 +39,7 @@ public class Forgott_Password extends AppCompatActivity {
         txtEmail = findViewById(R.id.forgot_email);
         forgetBtn = findViewById(R.id.forgot_button);
 
+
         forgetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,6 +47,28 @@ public class Forgott_Password extends AppCompatActivity {
             }
         });
 
+
+        loginBtn = findViewById(R.id.loginCard);
+        loginBtn.setOnClickListener(view -> login());
+
+
+    }
+
+    public void login(){
+        Intent intent = new Intent(Forgott_Password.this, Login.class);
+        startActivity(intent);
+
+        // for animation
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                vibrator.vibrate(50);
+            }
+        }
     }
 
     private void validateData(){
